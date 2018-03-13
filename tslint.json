@@ -1,0 +1,39 @@
+{
+    /*
+     * Possible values:
+     * - the name of a built-in config
+     * - the name of an NPM module which has a "main" file that exports a config object
+     * - a relative path to a JSON file
+     tslint:recommended is a stable, somewhat opinionated set of rules which we encourage for general TypeScript programming. This configuration follows semver, so it will not have breaking changes across minor or patch releases.
+
+        tslint:latest extends tslint:recommended and is continuously updated to include 
+        configuration for the latest rules in every TSLint release. Using this config may 
+        introduce breaking changes across minor releases as new rules are enabled which 
+        cause lint failures in your code. When TSLint reaches a major version bump, 
+        tslint:recommended will be updated to be identical to tslint:latest.
+     */
+    "extends": ["tslint:recommended", "tslint-react"],
+    "rules": {
+        "interface-name": [false, "never-prefix"],
+        "only-arrow-functions": false,
+        "jsx-no-multiline-js": false,
+        "trailing-comma": false,
+        "object-literal-sort-keys": false,
+        "no-trailing-whitespace": false,
+        "no-var-requires": false
+      /*
+       * Any rules specified here will override those from the base config we are extending.
+       */
+    },
+    "jsRules": {
+      /*
+       * Any rules specified here will override those from the base config we are extending.
+       */
+    },
+    "rulesDirectory": [
+      /*
+       * A list of relative or absolute paths to directories that contain custom rules.
+       * See the Custom Rules documentation below for more details.
+       */
+    ]
+  }
