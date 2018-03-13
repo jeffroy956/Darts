@@ -57,7 +57,7 @@
       "\\.(css|scss)$": "identity-obj-proxy"
     },
     "setupFiles": [
-      "./tools/setupTests.js"
+      "./support/setupTests.js"
     ]
   }
 }
