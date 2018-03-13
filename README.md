@@ -16,7 +16,7 @@ Business logic and AJAX DTOs.
 MobX stores that contain observable properties, computed properties, and actions.  These stores will be constructed from model objects and make service calls to API methods in actions.
 
 # Unit Tests
-Jest is used for unit testing, the ts-jest pre-processor is used to compile TypeScript tests.  In watch mode Jest will auto-detect new test fixtures and automatically run tests impacted by a code change.
+Jest is used for unit testing and the ts-jest pre-processor is used to compile TypeScript tests for Jest.  In watch mode Jest will monitors changes to source files and automatically run tests related to code changes since last commit.  Jest will also pick up new test fixtures using a configurable file name convention.
 
 File mocks for CSS Pre-processing imports in Jest:
 https://facebook.github.io/jest/docs/en/webpack.html
