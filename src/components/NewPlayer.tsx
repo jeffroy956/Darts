@@ -13,9 +13,7 @@ export default class NewPlayer extends React.Component<{}> {
                     </div>
                     <div className="form__commands">
                         <button>Save</button>
-                        <button>
-                            <Link to="/">Cancel</Link>
-                        </button>
+                        <Link to="/players">Cancel</Link>
                     </div>
                 </form>
             </div>

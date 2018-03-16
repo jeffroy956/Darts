@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom";
 import { Route, Switch } from "react-router";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import MainMenu from "./components/MainMenu";
+import NewPlayer from "./components/NewPlayer";
 import PlayerManagement from "./components/PlayerManagement";
 import PlayerStore from "./stores/PlayerStore";
 
@@ -27,6 +28,7 @@ ReactDOM.render(
         <HashRouter>
             <Switch>
                 <Route path="/players" component={PlayerManagement} />
+                <Route path="/new-player" component={NewPlayer} />
                 <Route path="/" component={MainMenu} />
             </Switch>
         </HashRouter>

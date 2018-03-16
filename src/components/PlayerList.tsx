@@ -12,7 +12,7 @@ export default class PlayerList extends React.Component<PlayerListProps> {
         const {players} = this.props;
         return(
             <div>
-                <ul>
+                <ul className="site-list">
                     {
                         players.map((player) => {
                             return <PlayerListItem key={player.name} player={player}/>;

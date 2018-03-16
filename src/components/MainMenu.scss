@@ -2,17 +2,24 @@
 @import "../mixins.scss";
 
 .main-menu {
-    background-color: slategrey;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background-color: #fff;
+    padding-top: $standardPadding;
 
     .menu-item {
-        a {
-            @include menu-link(#fff);
-        }
+        background-color: #fff;
         padding: $standardPadding;
         width: 50%;
+        a {
+            display: block;
+            height: 200px;
+            width: 100%;
+            background-color: $primaryBackgroundColor;
+            padding: $standardPadding;
+            @include menu-link($primaryFontColor);
+        }
     }
 
     .menu-item--full-width {

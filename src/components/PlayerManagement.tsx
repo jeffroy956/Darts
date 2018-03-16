@@ -20,6 +20,9 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
             <div>
                 <h2><Link to="/">&lt;-</Link> Players</h2>
                 {players && <PlayerList players={players} />}
+                <div className="button button--full-width">
+                    <Link to="/new-player">Add New Player</Link>
+                </div>
             </div>
         );
     }

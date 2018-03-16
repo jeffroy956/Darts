@@ -1,25 +1,53 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 html {
     box-sizing: border-box;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 h1, h2, h3 {
-    color: #fff;
+    color: $primaryFontColor;
     padding: $standardPadding;
     a {
-        @include menu-link(#fff);
+        @include menu-link($primaryFontColor);
     }
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+.button {
+    a {
+        display: block;
+        padding: $standardPadding * 2;
+        text-align: center;
+        min-width: 150px;
+        @include menu-link($primaryFontColor);
+    }
+}
+
+.button--full-width {
+    a {
+        width: 100%;
+    }
 }
 
 .app-container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: slategrey;
+    background-color: $primaryBackgroundColor;
+}
+
+.site-list {
+    list-style: none;
+    background-color: $primaryBackgroundColor;
+    margin: 0;
+    padding: 0;
+    li {
+        color: $primaryFontColor;
+        border-top: 1px solid $primaryBorderColor;
+        padding: $standardPadding * 2;
+    }
 }

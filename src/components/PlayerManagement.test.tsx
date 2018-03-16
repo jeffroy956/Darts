@@ -1,6 +1,7 @@
 import { mount, shallow } from "enzyme";
 import { Provider } from "mobx-react";
 import * as React from "react";
+import {MemoryRouter} from "react-router";
 import PlayerStore from "../stores/PlayerStore";
 import PlayerList from "./PlayerList";
 import PlayerManagement from "./PlayerManagement";
@@ -11,7 +12,7 @@ describe("<PlayerManagement/>", () => {
             name: "Joe"
         }]);
 
-        const playerManagement = mount(<PlayerManagement playerStore={playerStore}/>);
+        const playerManagement = mount(<MemoryRouter><PlayerManagement playerStore={playerStore}/></MemoryRouter>);
 
         const playerList = playerManagement.find(PlayerList);
         expect(playerList.props().players.length).toBe(1);
@@ -24,7 +25,12 @@ describe("<PlayerManagement/>", () => {
             }])
         };
 
-        const playerManagement = mount(<Provider {...stores}><PlayerManagement/></Provider>);
+        const playerManagement = mount(
+            <Provider {...stores}>
+                <MemoryRouter>
+                    <PlayerManagement/>
+                </MemoryRouter>
+            </Provider>);
 
         const playerList = playerManagement.find(PlayerList);
         expect(playerList.props().players.length).toBe(1);
