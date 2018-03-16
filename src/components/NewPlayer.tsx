@@ -5,7 +5,7 @@ export default class NewPlayer extends React.Component<{}> {
     public render() {
         return (
             <div>
-                <h1>Add Player</h1>
+                <h2>Add Player</h2>
                 <form>
                     <div>
                         <label htmlFor="playerName">Name</label>

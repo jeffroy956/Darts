@@ -8,6 +8,8 @@ import MainMenu from "./components/MainMenu";
 import PlayerManagement from "./components/PlayerManagement";
 import PlayerStore from "./stores/PlayerStore";
 
+require("./Index.scss");
+
 useStrict(true);
 const stores = {
     playerStore: new PlayerStore([

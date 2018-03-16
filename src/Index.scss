@@ -1,0 +1,25 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+html {
+    box-sizing: border-box;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    padding: $standardPadding;
+    a {
+        @include menu-link(#fff);
+    }
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: slategrey;
+}

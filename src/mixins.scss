@@ -1,0 +1,13 @@
+@mixin menu-link($color) {
+    text-decoration: none;
+    color: $color;
+    &:visited {
+        color: $color;
+    }
+    &:active {
+        color: $color;
+    }
+    &:hover {
+        color: $color;
+    }
+}

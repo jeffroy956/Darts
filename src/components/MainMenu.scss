@@ -1,3 +1,21 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
 .main-menu {
+    background-color: slategrey;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+
+    .menu-item {
+        a {
+            @include menu-link(#fff);
+        }
+        padding: $standardPadding;
+        width: 50%;
+    }
+
+    .menu-item--full-width {
+        width: 100%;
+    }
 }

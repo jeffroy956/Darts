@@ -5,6 +5,8 @@ import Player from "../models/Player";
 import PlayerStore from "../stores/PlayerStore";
 import PlayerList from "./PlayerList";
 
+require("./PlayerManagement.scss");
+
 interface PlayerManagementProps {
     playerStore?: PlayerStore;
 }
@@ -16,7 +18,7 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
 
         return (
             <div>
-                <h1><Link to="/">&lt;-</Link> Players</h1>
+                <h2><Link to="/">&lt;-</Link> Players</h2>
                 {players && <PlayerList players={players} />}
             </div>
         );

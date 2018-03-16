@@ -11,7 +11,7 @@ module.exports = {
     mode: "development",
     devtool: "cheap-module-eval-source-map",
     entry: {
-        main: "./index.tsx"
+        main: "./Index.tsx"
     },
     output: {
         path: outPath,
