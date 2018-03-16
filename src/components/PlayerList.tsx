@@ -18,7 +18,6 @@ export default class PlayerList extends React.Component<PlayerListProps> {
                             return <PlayerListItem key={player.name} player={player}/>;
                         })
                     }
-                    <li>hi</li>
                 </ul>
             </div>
         );

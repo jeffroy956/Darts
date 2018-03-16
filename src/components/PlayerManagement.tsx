@@ -1,5 +1,6 @@
 import { inject } from "mobx-react";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import Player from "../models/Player";
 import PlayerStore from "../stores/PlayerStore";
 import PlayerList from "./PlayerList";
@@ -15,6 +16,7 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
 
         return (
             <div>
+                <h1><Link to="/">&lt;-</Link> Players</h1>
                 {players && <PlayerList players={players} />}
             </div>
         );
