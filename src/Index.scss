@@ -8,6 +8,7 @@
 html {
     box-sizing: border-box;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
+    color: $primaryFontColor;
 }
 
 h1, h2, h3 {
@@ -49,5 +50,32 @@ h1, h2, h3 {
         color: $primaryFontColor;
         border-top: 1px solid $primaryBorderColor;
         padding: $standardPadding * 2;
+    }
+}
+
+.form__body {
+    padding: $standardPadding * 2;
+}
+
+.standard-field {
+    label {
+        display: block;
+    }
+    input {
+        width: 100%;
+    }
+}
+
+.form__commands {
+    border-top: 1px solid $primaryBorderColor;
+    padding: $standardPadding * 2;
+    display: flex;
+    a, button {
+        display: block;
+        text-align: center;
+        flex: 1;
+    }
+    a {
+        @include menu-link($primaryFontColor);
     }
 }

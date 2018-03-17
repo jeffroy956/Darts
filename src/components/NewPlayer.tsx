@@ -7,12 +7,14 @@ export default class NewPlayer extends React.Component<{}> {
             <div>
                 <h2>Add Player</h2>
                 <form>
-                    <div>
-                        <label htmlFor="playerName">Name</label>
-                        <input name="playerName" />
+                    <div className="form__body">
+                        <div className="standard-field">
+                            <label htmlFor="playerName">Name</label>
+                            <input name="playerName" />
+                        </div>
                     </div>
                     <div className="form__commands">
-                        <button>Save</button>
+                        <button>Add Player</button>
                         <Link to="/players">Cancel</Link>
                     </div>
                 </form>
