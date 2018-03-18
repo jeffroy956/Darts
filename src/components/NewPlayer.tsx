@@ -5,7 +5,7 @@ export default class NewPlayer extends React.Component<{}> {
     public render() {
         return (
             <div>
-                <h2>Add Player</h2>
+                <h1><Link to="/players"><i className="material-icons">arrow_back</i></Link>Add Player</h1>
                 <form>
                     <div className="form__body">
                         <div className="standard-field">
@@ -15,7 +15,6 @@ export default class NewPlayer extends React.Component<{}> {
                     </div>
                     <div className="form__commands">
                         <button>Add Player</button>
-                        <Link to="/players">Cancel</Link>
                     </div>
                 </form>
             </div>

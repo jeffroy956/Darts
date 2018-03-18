@@ -18,9 +18,9 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
 
         return (
             <div>
-                <h2><Link to="/">&lt;-</Link> Players</h2>
+                <h1><Link to="/"><i className="material-icons">arrow_back</i></Link> Players</h1>
                 {players && <PlayerList players={players} />}
-                <div className="button button--full-width">
+                <div className="link-button link-button--full-width">
                     <Link to="/new-player">Add New Player</Link>
                 </div>
             </div>
