@@ -17,11 +17,21 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
         const players: Player[] = (this.props.playerStore ? this.props.playerStore.players : null);
 
         return (
-            <div>
-                <h1><Link to="/"><i className="material-icons">arrow_back</i></Link> Players</h1>
-                {players && <PlayerList players={players} />}
-                <div className="link-button link-button--full-width">
-                    <Link to="/new-player">Add New Player</Link>
+            <div className="form-container">
+                <div className="form-header">
+                    <h1><Link to="/"><i className="material-icons">arrow_back</i></Link> Players</h1>
+                    <div className="form-header__command">
+                        <i className="material-icons">person_add</i>
+                    </div>
+                </div>
+                <div className="form-body">
+                    {players && <PlayerList players={players} />}
+                </div>
+                <div className="form-footer">
+                    <div className="link-button link-button--full-width">
+                        <Link to="/new-player">Add New Player</Link>
+                        <i className="material-icons">add_circle</i>
+                    </div>
                 </div>
             </div>
         );

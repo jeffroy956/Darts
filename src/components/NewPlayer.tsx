@@ -7,13 +7,13 @@ export default class NewPlayer extends React.Component<{}> {
             <div>
                 <h1><Link to="/players"><i className="material-icons">arrow_back</i></Link>Add Player</h1>
                 <form>
-                    <div className="form__body">
-                        <div className="standard-field">
+                    <div className="form-body">
+                        <div className="form-field">
                             <label htmlFor="playerName">Name</label>
                             <input name="playerName" />
                         </div>
                     </div>
-                    <div className="form__commands">
+                    <div className="form-commands">
                         <button>Add Player</button>
                     </div>
                 </form>

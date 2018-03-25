@@ -7,7 +7,23 @@ $borderGrey: #E9E8E8;
 
 $blue500: #2196F3;
 $indigo500: #3F51B5;
+$indigoA100: #8C9EFF;
+$indigoA200: #536DFE;
+$indigoA400:#3D5AFE;
+$indigoA700:#304FFE;
 
-$primaryFontColor: #fff;
-$primaryBackgroundColor: $indigo500;
-$primaryBorderColor: #fff;
+$amber500: #FFC107;
+$brown500: #795548;
+$blueGrey500: #607D8B;
+$deepPurple500: #673AB7;
+$red500: #F44336;
+
+$headlineFontColor: #fff;
+$headlineBackgroundColor: $indigo500;
+$primaryBorderColor: $borderGrey;
+
+$accentBackgroundColor: $indigoA100;
+$accentForegroundColor: #fff;
+
+$darkFontColor: $darkGrey;
+$lightFontColor: $lightGrey;

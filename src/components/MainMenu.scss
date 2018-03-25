@@ -16,9 +16,9 @@
             display: block;
             height: 200px;
             width: 100%;
-            background-color: $primaryBackgroundColor;
+            background-color: $headlineBackgroundColor;
             padding: $standardPadding;
-            @include menu-link($primaryFontColor);
+            @include menu-link($headlineFontColor);
         }
     }
 

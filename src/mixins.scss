@@ -26,7 +26,7 @@
 }
 
 @mixin primary-button() {
-    @include push-button(darkblue, $primaryFontColor, gainsboro, darkgrey);
+    @include push-button(darkblue, $darkFontColor, gainsboro, darkgrey);
 }
 
 //https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
