@@ -20,3 +20,6 @@ Jest is used for unit testing and the ts-jest pre-processor is used to compile T
 
 File mocks for CSS Pre-processing imports in Jest:
 https://facebook.github.io/jest/docs/en/webpack.html
+
+ripple button
+https://codepen.io/Ruddy/pen/09052b957d82a17bd6ca70ac6663dd6a
