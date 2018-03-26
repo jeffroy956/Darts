@@ -78,26 +78,6 @@ button {
         }
     }
 }
-.form-header__command {
-    display: block;
-    position: relative;
-    left: $standardPadding * 2;
-    top: -24px;        
-    width: 52px;
-    border-radius: 100%;
-    @include box-shadow(2);
-    background-color: $accentBackgroundColor;
-    i {
-        font-size: 32px;
-        line-height: 52px;
-        text-align: center;
-        color: $accentForegroundColor;
-        cursor: pointer;
-        &:hover {
-            opacity: 0.8;
-        }
-    }
-}
 .form-body {
     padding: $standardPadding * 2;
     padding-top: 40px;

@@ -3,9 +3,9 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Player from "../models/Player";
 import PlayerStore from "../stores/PlayerStore";
+import { HeaderTitle } from "./HeaderTitle";
+import IconButton from "./IconButton";
 import PlayerList from "./PlayerList";
-
-require("./PlayerManagement.scss");
 
 interface PlayerManagementProps {
     playerStore?: PlayerStore;
@@ -19,10 +19,8 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
         return (
             <div className="form-container">
                 <div className="form-header">
-                    <h1><Link to="/"><i className="material-icons">arrow_back</i></Link> Players</h1>
-                    <div className="form-header__command">
-                        <i className="material-icons">person_add</i>
-                    </div>
+                    <HeaderTitle title="Players" backLinkTo="/" />
+                    <IconButton iconName="add" />
                 </div>
                 <div className="form-body">
                     {players && <PlayerList players={players} />}

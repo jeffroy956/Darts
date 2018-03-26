@@ -1,0 +1,36 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.icon-button__icon {
+    display: inline-block;
+    width: 48px;
+    border-radius: 100%;
+    @include box-shadow(1);
+    background-color: $accentBackgroundColor;
+
+    i {
+        display: block;
+        width: 48px;
+        font-size: 28px;
+        line-height: 48px;
+        text-align: center;
+        color: $accentForegroundColor;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.95;
+        }
+    }
+}
+
+
+.form-header {
+    .icon-button {
+        height: 0;
+    }
+    
+    .icon-button__icon {
+        position: relative;
+        left: $standardPadding * 2;
+        top: -24px;        
+    }
+}
