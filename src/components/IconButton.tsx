@@ -8,6 +8,9 @@ interface HeaderCommandProps {
 
 interface HeaderCommandState {
     buttonActivated: boolean;
+    rippleRadius: number;
+    rippleX: number;
+    rippleY: number;
 }
 
 const rippleWait: number = 1000;
@@ -17,44 +20,56 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
         super(props);
 
         this.state = {
-            buttonActivated: false
+            buttonActivated: false,
+            rippleRadius: null,
+            rippleX: null,
+            rippleY: null
         };
     }
 
     public render() {
         return(
             <div className="icon-button">
-                <div className={this.getButtonCss()} onClick={this.buttonClicked}>
+                <div className="icon-button__icon" onClick={this.buttonClicked}>
+                    {this.state.buttonActivated && <span className="element-ripple" style={this.rippleStyle()} />}
                     <i className="material-icons">{this.props.iconName}</i>
                 </div>
             </div>
         );
     }
 
-    private getButtonCss(): string {
-        let baseCssClass = "icon-button__icon";
-        if (this.state.buttonActivated) {
-            baseCssClass = baseCssClass + " element--activated";
-        }
-        return  baseCssClass;
-    }
+    private rippleStyle(): React.CSSProperties {
+        const {rippleRadius, rippleX, rippleY} = this.state;
+        return {
+            width: rippleRadius,
+            height: rippleRadius,
+            top: rippleY,
+            left: rippleX
+        };
+    }   
 
-    private buttonClicked = (): void => {
+    private buttonClicked = (eventArgs: any): void => {
         if (this.state.buttonActivated) {
             return;
         }
+        const {pageX, pageY} = eventArgs;
+        const {offsetLeft, offsetTop, clientWidth, clientHeight} = eventArgs.currentTarget;
 
         this.setState((prevState: HeaderCommandState) => {
             return {
-                buttonActivated: true
+                buttonActivated: true,
+                rippleX: pageX - offsetLeft - clientWidth / 2,
+                rippleY: pageY - offsetTop - clientHeight / 2
             };
         });
 
         setTimeout(() => {
             this.setState((prevState: HeaderCommandState) => {
-                console.log("ripple removed");
                 return {
-                    buttonActivated: false
+                    buttonActivated: false,
+                    rippleRadius: null,
+                    rippleX: null,
+                    rippleY: null
                 };
             });
         }, rippleWait);

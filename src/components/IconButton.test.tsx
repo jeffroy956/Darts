@@ -18,12 +18,13 @@ describe("<HeaderCommand/>", () => {
         const rippleWait = new Promise((resolve) => {
             setTimeout(() => {
                 resolve();
-            }, 2000);
+            }, 1100);
         });
 
         rippleElement.simulate("click");
 
         return rippleWait.then(() => {
+            iconButton.update();
             expect(iconButton.find(".element--activated").length).toBe(0);
         });
         

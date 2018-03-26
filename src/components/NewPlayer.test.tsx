@@ -7,6 +7,5 @@ describe("<NewPlayer/>", () => {
         const newPlayerForm = shallow(<NewPlayer/>);
 
         expect(newPlayerForm.find("input").length).toBe(1);
-        expect(newPlayerForm.find("button").length).toBe(2);
     });
 });
