@@ -1,19 +1,22 @@
 import * as React from "react";
+import { Redirect } from "react-router";
 
 require("./IconButton.scss");
 
 interface HeaderCommandProps {
     iconName: string;
+    linkTo?: string;
 }
 
 interface HeaderCommandState {
     buttonActivated: boolean;
+    routeNavigated: boolean;
     rippleRadius: number;
     rippleX: number;
     rippleY: number;
 }
 
-const rippleWait: number = 500;
+const rippleWait: number = 300;
 
 export default class HeaderCommand extends React.Component<HeaderCommandProps, HeaderCommandState> {
     constructor(props: HeaderCommandProps) {
@@ -21,6 +24,7 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
 
         this.state = {
             buttonActivated: false,
+            routeNavigated: false,
             rippleRadius: null,
             rippleX: null,
             rippleY: null
@@ -30,8 +34,10 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
     public render() {
         return(
             <div className={this.getButtonClass()}>
-                <div className="icon-button__icon" onClick={this.buttonClicked}>
+                <div className="icon-button__icon" onMouseDown={this.mouseDown} onClick={this.buttonClicked}>
                     {this.state.buttonActivated && <span className="element-ripple" style={this.rippleStyle()} />}
+                    {this.state.routeNavigated && !this.state.buttonActivated && 
+                        <Redirect push={true} to={this.props.linkTo} />}
                     <i className="material-icons">{this.props.iconName}</i>
                 </div>
             </div>
@@ -55,14 +61,14 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
         };
     }   
 
-    private buttonClicked = (eventArgs: any): void => {
+    private mouseDown = (eventArgs: any): void => {
         if (this.state.buttonActivated) {
             return;
         }
         const {pageX, pageY} = eventArgs;
         const {offsetLeft, offsetTop, clientWidth} = eventArgs.currentTarget;
 
-        this.setState((prevState: HeaderCommandState) => {
+        this.setState(() => {
             return {
                 buttonActivated: true,
                 rippleRadius: clientWidth,
@@ -72,7 +78,7 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
         });
 
         setTimeout(() => {
-            this.setState((prevState: HeaderCommandState) => {
+            this.setState(() => {
                 return {
                     buttonActivated: false,
                     rippleRadius: null,
@@ -81,5 +87,15 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
                 };
             });
         }, rippleWait);
+    }
+
+    private buttonClicked = (eventArgs: any): void => {
+        if (this.props.linkTo) {
+            this.setState(() => {
+                return {
+                    routeNavigated: true,
+                };
+            });
+        }
     }
 }

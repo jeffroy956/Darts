@@ -17,4 +17,9 @@ describe("<HeaderTitle/>", () => {
         expect(headerTitle.find("h1").text()).toContain("My Title");
         expect(headerTitle.find(Link).length).toBe(0);
     });
+
+    it("renders with an accept command", () => {
+
+        const headerTitle = shallow(<HeaderTitle title="My Title" />);
+    });
 });

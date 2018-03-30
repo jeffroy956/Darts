@@ -20,7 +20,7 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
             <div className="form-container">
                 <div className="form-header">
                     <HeaderTitle title="Players" backLinkTo="/" />
-                    <IconButton iconName="add" />
+                    <IconButton iconName="add" linkTo="/new-player" />
                 </div>
                 <div className="form-body">
                     {players && <PlayerList players={players} />}

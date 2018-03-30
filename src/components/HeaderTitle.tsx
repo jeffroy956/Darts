@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 interface HeaderTitleProps {
     title: string;
     backLinkTo?: string;
+    acceptCommand?: () => void;
 }
 
 export const HeaderTitle: React.SFC<HeaderTitleProps> = (props) => {
