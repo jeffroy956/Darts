@@ -13,7 +13,7 @@ interface HeaderCommandState {
     rippleY: number;
 }
 
-const rippleWait: number = 1000;
+const rippleWait: number = 500;
 
 export default class HeaderCommand extends React.Component<HeaderCommandProps, HeaderCommandState> {
     constructor(props: HeaderCommandProps) {
@@ -29,7 +29,7 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
 
     public render() {
         return(
-            <div className="icon-button">
+            <div className={this.getButtonClass()}>
                 <div className="icon-button__icon" onClick={this.buttonClicked}>
                     {this.state.buttonActivated && <span className="element-ripple" style={this.rippleStyle()} />}
                     <i className="material-icons">{this.props.iconName}</i>
@@ -38,6 +38,13 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
         );
     }
 
+    private getButtonClass() {
+        let baseClass = "icon-button";
+        if (this.state.buttonActivated) {
+            baseClass += " element--activated";
+        }
+        return  baseClass;
+    }
     private rippleStyle(): React.CSSProperties {
         const {rippleRadius, rippleX, rippleY} = this.state;
         return {
@@ -53,13 +60,14 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
             return;
         }
         const {pageX, pageY} = eventArgs;
-        const {offsetLeft, offsetTop, clientWidth, clientHeight} = eventArgs.currentTarget;
+        const {offsetLeft, offsetTop, clientWidth} = eventArgs.currentTarget;
 
         this.setState((prevState: HeaderCommandState) => {
             return {
                 buttonActivated: true,
+                rippleRadius: clientWidth,
                 rippleX: pageX - offsetLeft - clientWidth / 2,
-                rippleY: pageY - offsetTop - clientHeight / 2
+                rippleY: pageY - offsetTop - clientWidth / 2
             };
         });
 

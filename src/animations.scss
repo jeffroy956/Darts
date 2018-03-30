@@ -1,4 +1,6 @@
+// https://codepen.io/Ruddy/pen/09052b957d82a17bd6ca70ac6663dd6a
 .element-ripple {
+    display: block;
     width: 0;
     height: 0;
     border-radius: 50%;
@@ -6,10 +8,9 @@
     transform: scale(0);
     position: absolute;
     opacity: 1;
-  }
-  .ripple-animation {
-      animation: ripple-drop .6s linear;
-  }
+    z-index: 100;
+    animation: ripple-drop .4s linear;
+}
   
   @keyframes ripple-drop {
     100% {

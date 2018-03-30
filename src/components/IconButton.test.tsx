@@ -6,27 +6,10 @@ describe("<HeaderCommand/>", () => {
     it("triggers ripple effect", () => {
         const iconButton = shallow(<IconButton iconName="Add" />);
         const rippleElement = iconButton.find(".icon-button__icon");
-        rippleElement.simulate("click");
+        const eventArgs = { pageX: 10, pageY: 10, currentTarget: { offsetLeft: 10, offsetTop: 10, clientWidth: 50 } };
+        rippleElement.simulate("click", eventArgs);
 
         expect(iconButton.find(".element--activated").length).toBe(1);
     });
 
-    it("removes ripple effect after 1 second", () => {
-        const iconButton = shallow(<IconButton iconName="Add" />);
-        const rippleElement = iconButton.find(".icon-button__icon");
-        
-        const rippleWait = new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 1100);
-        });
-
-        rippleElement.simulate("click");
-
-        return rippleWait.then(() => {
-            iconButton.update();
-            expect(iconButton.find(".element--activated").length).toBe(0);
-        });
-        
-    });
 });

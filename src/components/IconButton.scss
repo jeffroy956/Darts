@@ -8,10 +8,12 @@
     border-radius: 100%;
     @include box-shadow(1);
     background-color: $accentBackgroundColor;
+    user-select: none;
 
     i {
+        
         display: block;
-        width: 48px;
+        width: 100%;
         font-size: 28px;
         line-height: 48px;
         text-align: center;
@@ -23,6 +25,19 @@
     }
 }
 
+
+.element--activated {
+    .icon-button__icon {
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 47px;
+        @include box-shadow(2);
+        i {
+            font-size: 27px;
+            line-height: 47px;
+        }
+    }
+}
 
 .form-header {
     .icon-button {
