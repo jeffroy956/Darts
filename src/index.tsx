@@ -1,4 +1,4 @@
-import { useStrict } from "mobx";
+import { configure } from "mobx";
 import { Provider } from "mobx-react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -11,7 +11,9 @@ import PlayerStore from "./stores/PlayerStore";
 
 require("./Index.scss");
 
-useStrict(true);
+// replaces mobx useStrict:
+configure({enforceActions: true});
+
 const stores = {
     playerStore: new PlayerStore([
         {
