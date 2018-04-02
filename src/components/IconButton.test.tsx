@@ -12,4 +12,14 @@ describe("<HeaderCommand/>", () => {
         expect(iconButton.find(".element--activated").length).toBe(1);
     });
 
+    it("executes command when clicked", () => {
+        const clickCommand = jest.fn();
+
+        const iconButton = shallow(<IconButton iconName="Add" clickCommand={clickCommand} />);
+
+        iconButton.find(".icon-button__icon").simulate("click");
+
+        expect(clickCommand).toHaveBeenCalled();
+    });
+
 });

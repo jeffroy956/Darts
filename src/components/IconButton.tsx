@@ -3,12 +3,13 @@ import { Redirect } from "react-router";
 
 require("./IconButton.scss");
 
-interface HeaderCommandProps {
+interface IconButtonProps {
     iconName: string;
     linkTo?: string;
+    clickCommand?: () => void;
 }
 
-interface HeaderCommandState {
+interface IconButtonState {
     buttonActivated: boolean;
     routeNavigated: boolean;
     rippleRadius: number;
@@ -18,8 +19,8 @@ interface HeaderCommandState {
 
 const rippleWait: number = 300;
 
-export default class HeaderCommand extends React.Component<HeaderCommandProps, HeaderCommandState> {
-    constructor(props: HeaderCommandProps) {
+export default class IconButtonCommand extends React.Component<IconButtonProps, IconButtonState> {
+    constructor(props: IconButtonProps) {
         super(props);
 
         this.state = {
@@ -36,7 +37,7 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
             <div className={this.getButtonClass()}>
                 <div className="icon-button__icon" onMouseDown={this.mouseDown} onClick={this.buttonClicked}>
                     {this.state.buttonActivated && <span className="element-ripple" style={this.rippleStyle()} />}
-                    {this.state.routeNavigated && !this.state.buttonActivated && 
+                    {this.props.linkTo && this.state.routeNavigated && !this.state.buttonActivated && 
                         <Redirect push={true} to={this.props.linkTo} />}
                     <i className="material-icons">{this.props.iconName}</i>
                 </div>
@@ -96,6 +97,10 @@ export default class HeaderCommand extends React.Component<HeaderCommandProps, H
                     routeNavigated: true,
                 };
             });
+        }
+    
+        if (this.props.clickCommand) {
+            this.props.clickCommand();
         }
     }
 }
