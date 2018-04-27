@@ -3,7 +3,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Player from "../models/Player";
 import PlayerStore from "../stores/PlayerStore";
-import { HeaderContent } from "./HeaderContent";
+import { Header } from "./Header";
 import IconButton from "./IconButton";
 import PlayerList from "./PlayerList";
 
@@ -19,7 +19,7 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
         return (
             <div className="form-container">
                 <div className="form-header">
-                    <HeaderContent title="Players" backLinkTo="/" />
+                    <Header title="Players" backLinkTo="/" />
                     <IconButton iconName="add" linkTo="/new-player" />
                 </div>
                 <div className="form-body">

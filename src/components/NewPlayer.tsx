@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { HeaderContent } from "./HeaderContent";
+import { Header } from "./Header";
 import IconButton from "./IconButton";
 
 export default class NewPlayer extends React.Component<{}> {
@@ -8,7 +8,7 @@ export default class NewPlayer extends React.Component<{}> {
         return (
             <div className="form-container">
                 <div className="form-header">
-                    <HeaderContent title="New Player" backLinkTo="/players" />
+                    <Header title="New Player" backLinkTo="/players" />
                     <IconButton iconName="done" />
                 </div>
                 <div className="form-body">

@@ -1,0 +1,24 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.header {
+    position: relative;
+
+    background-color: $headlineBackgroundColor;
+    @include box-shadow(2);
+}
+
+.header__toolbar {
+    display: flex;
+    flex-wrap: nowrap;
+    a {
+        display: inline-block;
+        margin: 33px $standardPadding 0 $standardPadding * 2;
+        padding: $standardPadding;
+        color: #fff;
+    }
+    h1 {
+        flex-grow: 1;
+    }
+}
+
