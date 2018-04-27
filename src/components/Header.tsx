@@ -7,7 +7,6 @@ require("./Header.scss");
 interface Header {
     title: string;
     backLinkTo?: string;
-    acceptCommand?: () => void;
 }
 
 export const Header: React.SFC<Header> = (props) => {
@@ -23,9 +22,11 @@ export const Header: React.SFC<Header> = (props) => {
                     {props.title}
                 </h1>
             </div>
-            <div className="header__accept">
-                {props.acceptCommand && <IconButton iconName="done"/>}
-            </div>
+            {props.children && 
+                <div className="header__offset-commands">
+                    {props.children}
+                </div>
+            }
         </div>
     );
 };

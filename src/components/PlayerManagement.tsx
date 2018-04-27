@@ -18,10 +18,9 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
 
         return (
             <div className="form-container">
-                <div className="form-header">
-                    <Header title="Players" backLinkTo="/" />
+                <Header title="Players" backLinkTo="/">
                     <IconButton iconName="add" linkTo="/new-player" />
-                </div>
+                </Header>
                 <div className="form-body">
                     {players && <PlayerList players={players} />}
                 </div>

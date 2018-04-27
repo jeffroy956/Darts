@@ -7,10 +7,9 @@ export default class NewPlayer extends React.Component<{}> {
     public render() {
         return (
             <div className="form-container">
-                <div className="form-header">
-                    <Header title="New Player" backLinkTo="/players" />
+                <Header title="New Player" backLinkTo="/players">
                     <IconButton iconName="done" />
-                </div>
+                </Header>
                 <div className="form-body">
                     <div className="form-field">
                         <i className="material-icons">person</i>

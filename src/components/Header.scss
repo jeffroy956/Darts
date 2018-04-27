@@ -7,6 +7,11 @@
     background-color: $headlineBackgroundColor;
     @include box-shadow(2);
 }
+.header__offset-commands {
+    position: absolute;
+    left: 10px;
+    bottom: -20px;
+}
 
 .header__toolbar {
     display: flex;

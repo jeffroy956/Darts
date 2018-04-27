@@ -22,7 +22,11 @@ describe("<HeaderContent/>", () => {
     it("renders with an accept command", () => {
         const acceptCommand = jest.fn();
 
-        const headerTitle = shallow(<Header title="My Title" acceptCommand={acceptCommand} />);
+        const headerTitle = shallow(
+            <Header title="My Title">
+                <IconButton iconName="done" />
+            </Header>
+        );
 
         const acceptButton = headerTitle.find(IconButton);
 
