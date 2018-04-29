@@ -19,7 +19,7 @@ interface IconButtonState {
 
 const rippleWait: number = 300;
 
-export default class IconButtonCommand extends React.Component<IconButtonProps, IconButtonState> {
+export default class IconButton extends React.Component<IconButtonProps, IconButtonState> {
     constructor(props: IconButtonProps) {
         super(props);
 

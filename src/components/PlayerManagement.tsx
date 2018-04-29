@@ -3,8 +3,9 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Player from "../models/Player";
 import PlayerStore from "../stores/PlayerStore";
-import { Header } from "./Header";
 import IconButton from "./IconButton";
+import InnerPage from "./InnerPage";
+import PageHeader from "./PageHeader";
 import PlayerList from "./PlayerList";
 
 interface PlayerManagementProps {
@@ -17,20 +18,15 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
         const players: Player[] = (this.props.playerStore ? this.props.playerStore.players : null);
 
         return (
-            <div className="form-container">
-                <Header title="Players" backLinkTo="/">
-                    <IconButton iconName="add" linkTo="/new-player" />
-                </Header>
-                <div className="form-body">
-                    {players && <PlayerList players={players} />}
-                </div>
-                <div className="form-footer">
-                    <div className="link-button link-button--full-width">
-                        <Link to="/new-player">Add New Player</Link>
-                        <i className="material-icons">add_circle</i>
-                    </div>
-                </div>
-            </div>
+            <InnerPage 
+                pageHeader={<PageHeader 
+                    title="Players" 
+                    backLinkTo="/" 
+                    acceptElement={<IconButton iconName="add" linkTo="/new-player" />} 
+                />}
+            >
+                <PlayerList players={players} />
+            </InnerPage>
         );
     }
 }

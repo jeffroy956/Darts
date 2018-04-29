@@ -1,23 +1,28 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { Header } from "./Header";
 import IconButton from "./IconButton";
+import InnerPage from "./InnerPage";
+import PageHeader from "./PageHeader";
 
 export default class NewPlayer extends React.Component<{}> {
     public render() {
         return (
-            <div className="form-container">
-                <Header title="New Player" backLinkTo="/players">
-                    <IconButton iconName="done" />
-                </Header>
+            <InnerPage 
+                pageHeader={
+                    <PageHeader 
+                        title="New Player" 
+                        backLinkTo="/players"
+                        acceptElement={<IconButton iconName="done" />}
+                    />
+                }
+            >
                 <div className="form-body">
                     <div className="form-field">
                         <i className="material-icons">person</i>
                         <input name="playerName" placeholder="Name *" />
                     </div>
                 </div>
-                <div className="form-footer"/>
-            </div>
+            </InnerPage>
         );
     }
 }

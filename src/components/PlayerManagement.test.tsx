@@ -7,18 +7,7 @@ import PlayerList from "./PlayerList";
 import PlayerManagement from "./PlayerManagement";
 
 describe("<PlayerManagement/>", () => {
-    it("renders PlayerList and add new player button", () => {
-        const playerStore = new PlayerStore([{
-            name: "Joe"
-        }]);
-
-        const playerManagement = mount(<MemoryRouter><PlayerManagement playerStore={playerStore}/></MemoryRouter>);
-
-        const playerList = playerManagement.find(PlayerList);
-        expect(playerList.props().players.length).toBe(1);
-    });
-
-    it("PlayerStore is injected by MobX provider", () => {
+    it("players are listed on page", () => {
         const stores = {
             playerStore: new PlayerStore([{
                 name: "Joe"
