@@ -45,6 +45,20 @@ export default class IconButton extends React.Component<IconButtonProps, IconBut
         );
     }
 
+    public buttonClicked = (eventArgs: any): void => {
+        if (this.props.linkTo) {
+            this.setState(() => {
+                return {
+                    routeNavigated: true,
+                };
+            });
+        }
+    
+        if (this.props.clickCommand) {
+            this.props.clickCommand();
+        }
+    }
+
     private getButtonClass() {
         let baseClass = "icon-button";
         if (this.state.buttonActivated) {
@@ -90,17 +104,4 @@ export default class IconButton extends React.Component<IconButtonProps, IconBut
         }, rippleWait);
     }
 
-    private buttonClicked = (eventArgs: any): void => {
-        if (this.props.linkTo) {
-            this.setState(() => {
-                return {
-                    routeNavigated: true,
-                };
-            });
-        }
-    
-        if (this.props.clickCommand) {
-            this.props.clickCommand();
-        }
-    }
 }
