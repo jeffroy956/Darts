@@ -6,6 +6,8 @@ import GameStore from "../stores/GameStore";
 import InnerPage from "./InnerPage";
 import PageHeader from "./PageHeader";
 
+require("./NewGame.scss");
+
 interface NewGameProps {
     gameStore?: GameStore;
 }
@@ -27,7 +29,13 @@ export default class NewGame extends React.Component<NewGameProps> {
             >
                 <div className="form-body">
                     <div className="new-game__players">
-                    {selectedPlayers.map((player) => player.name).join(", ")}
+                        <i className="material-icons">people</i>
+                        <span>
+                        {(selectedPlayers && selectedPlayers.length > 0) 
+                            ? selectedPlayers.map((player) => player.name).join(", ")
+                            : "No players selected."
+                        }
+                        </span>
                     </div>
                     <div className="form-field">
                         <label>Game</label>

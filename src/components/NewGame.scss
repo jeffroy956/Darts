@@ -1,0 +1,7 @@
+@import "../variables.scss";
+
+.new-game__players {
+    padding: $standardPadding * 2;
+    border: 1px solid $primaryBorderColor;
+    cursor: pointer;
+}

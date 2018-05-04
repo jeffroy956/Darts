@@ -4,6 +4,7 @@ import * as React from "react";
 import { MemoryRouter, Route, Switch } from "react-router";
 import PlayerStore from "../stores/PlayerStore";
 import IconButton from "./IconButton";
+import InnerPage from "./InnerPage";
 import NewPlayer from "./NewPlayer";
 import PlayerManagement from "./PlayerManagement";
 
@@ -17,15 +18,9 @@ describe("<NewPlayer/>", () => {
     });
 
     it("shows empty form", () => {
-        const playerProvider = mount(
-            <Provider {...stores}>
-                <MemoryRouter>
-                    <NewPlayer/>
-                </MemoryRouter>
-            </Provider>
-        );
+        const newPlayer = shallow(<NewPlayer playerStore={stores.playerStore} />);
 
-        expect(playerProvider.find(NewPlayer).find("input").length).toBe(1);
+        expect(newPlayer.dive().find("input").length).toBe(1);
     });
 
     it("adds a new player", () => {
