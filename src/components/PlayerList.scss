@@ -1,0 +1,10 @@
+@import "../variables.scss";
+
+.player-list {
+    label {
+        span {
+            display: inline-block;
+            margin-left: $standardPadding;
+        }
+    }
+}

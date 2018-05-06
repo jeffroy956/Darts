@@ -2,10 +2,12 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import Player from "../models/Player";
 
+require("./PlayerList.scss");
+
 interface PlayerListProps {
     players: Player[];
     allowSelection?: boolean;
-    selectedPlayers?: string[];
+    selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
 }
 
@@ -14,7 +16,7 @@ export default class PlayerList extends React.Component<PlayerListProps> {
     public render() {
         const {players, allowSelection, selectedPlayers, onSelectionChanged} = this.props;
         return(
-            <div>
+            <div className="player-list">
                 <ul className="site-list">
                     {
                         players.map((player) => {
@@ -38,7 +40,7 @@ export default class PlayerList extends React.Component<PlayerListProps> {
 interface PlayerListItemProps {
     player: Player;
     allowSelection?: boolean;
-    selectedPlayers?: string[];
+    selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
 }
 
@@ -51,7 +53,7 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
         super(props);
         if (props.allowSelection && props.selectedPlayers) {
             this.state = {
-                selected: props.selectedPlayers.some((sp) => sp === props.player.name)
+                selected: props.selectedPlayers.some((sp) => sp.name === props.player.name)
             };
         }
     }
@@ -59,29 +61,34 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
     public render() {
         return (
             <li>
-                <label>{this.props.player.name}
-                {this.props.allowSelection && 
-                    <input 
-                        type="checkbox" 
-                        checked={this.state.selected}
-                        onChange={this.handleChange}
-                    />
-                }
+                <label>
+                    {this.props.allowSelection && 
+                        <input 
+                            type="checkbox" 
+                            checked={this.state.selected}
+                            onChange={this.handleChange}
+                        />
+                    }
+                    <span>
+                        {this.props.player.name}
+                    </span>
                 </label>
             </li>
         );        
     }
 
     private handleChange = () => {
-        this.setState((prevState) => {
+        const playerSelected = !this.state.selected;
+
+        this.setState(() => {
             return {
-                selected: !prevState.selected
+                selected: playerSelected
             };
         });
         
         const {onSelectionChanged, player} = this.props;
         if (onSelectionChanged) {
-            onSelectionChanged(player, this.state.selected);
+            onSelectionChanged(player, playerSelected);
         }
 
     }

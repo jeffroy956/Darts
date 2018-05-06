@@ -9,8 +9,7 @@ describe("<NewGame/>", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
         const gameStore = new GameStore(playerStore);
 
-        gameStore.selectPlayer("Lisa");
-        gameStore.selectPlayer("Dawn");
+        gameStore.selectPlayers([playerStore.players[3], playerStore.players[2]]);
 
         const newGame = shallow(<NewGame gameStore={gameStore}/>);
         expect(newGame.dive().find(".new-game__players").find("span").text()).toBe("Lisa, Dawn");

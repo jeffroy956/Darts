@@ -37,44 +37,12 @@ describe("GameStore", () => {
         const playerStore = new PlayerStore(players);
         const gameStore = new GameStore(playerStore);
         
-        gameStore.selectPlayer("Mary");
-        gameStore.selectPlayer("Joe");
+        gameStore.selectPlayers([players[3], players[1]]);
 
         expect(gameStore.selectedPlayers).toEqual([
             {
                 name: "Mary"
             },
-            {
-                name: "Joe"
-            }
-        ]);
-    });
-
-    it("deselects players", () => {
-        const players: Player[] = 
-        [ 
-            {
-                name: "Jane"
-            },
-            {
-                name: "Joe"
-            },
-            {
-                name: "Mike"
-            },
-            {
-                name: "Mary"
-            }
-        ];
-
-        const playerStore = new PlayerStore(players);
-        const gameStore = new GameStore(playerStore);
-        
-        gameStore.selectPlayer("Mary");
-        gameStore.selectPlayer("Joe");
-        gameStore.deselectPlayer("Mary");
-
-        expect(gameStore.selectedPlayers).toEqual([
             {
                 name: "Joe"
             }

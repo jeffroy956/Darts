@@ -49,7 +49,7 @@ describe("<PlayersList/>", () => {
             <PlayerList 
                 players={players}
                 allowSelection={true}
-                selectedPlayers={["Mike"]}
+                selectedPlayers={[players[0]]}
             />
         );
 
