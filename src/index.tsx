@@ -8,6 +8,7 @@ import MainMenu from "./components/MainMenu";
 import NewGame from "./components/NewGame";
 import NewPlayer from "./components/NewPlayer";
 import PlayerManagement from "./components/PlayerManagement";
+import ScoreBoard from "./components/Scoreboard";
 import SelectPlayers from "./components/SelectPlayers";
 import GameStore from "./stores/GameStore";
 import PlayerStore from "./stores/PlayerStore";
@@ -40,6 +41,7 @@ ReactDOM.render(
                 <Route path="/new-player" component={NewPlayer} />
                 <Route path="/new-game/select-players" component={SelectPlayers} />
                 <Route path="/new-game" component={NewGame} />
+                <Route path="/scoreboard" component={ScoreBoard} />
                 <Route path="/" component={MainMenu} />
             </Switch>
         </HashRouter>

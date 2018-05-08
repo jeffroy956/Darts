@@ -32,4 +32,15 @@ describe("<NewGame/>", () => {
 
         expect(gameStore.selectedGame).toBe("Cricket");
     });
+
+    it("disables start game button when no players selected", () => {
+        const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
+        const gameStore = new GameStore(playerStore);
+
+        const newGame = shallow(<NewGame gameStore={gameStore}/>);
+
+        const startButton = newGame.dive().find("button");
+
+        expect(startButton.props().disabled).toBe(true);
+    });
 });

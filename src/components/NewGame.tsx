@@ -12,12 +12,26 @@ interface NewGameProps {
     gameStore?: GameStore;
 }
 
+interface NewGameState {
+    gameStarted: boolean;
+}
+
 @inject("gameStore")
 @observer
-export default class NewGame extends React.Component<NewGameProps> {
+export default class NewGame extends React.Component<NewGameProps, NewGameState> {
+    public constructor(props) {
+        super(props);
+
+        this.state = {
+            gameStarted: false
+        };
+    }
 
     public render() {
-        const {selectedPlayers, availableGames, selectedGame} = this.props.gameStore;
+        if (this.state.gameStarted) {
+            return <Redirect to="/scoreboard" />;
+        }
+        const {selectedPlayers, availableGames, selectedGame, allowNewGame} = this.props.gameStore;
         return (
             <InnerPage 
                 pageHeader={
@@ -27,7 +41,7 @@ export default class NewGame extends React.Component<NewGameProps> {
                     />
                 }
             >
-                <div className="form-body">
+                <div>
                     <Link to="/new-game/select-players">
                         <div className="new-game__players">
                             <i className="material-icons">people</i>
@@ -47,6 +61,9 @@ export default class NewGame extends React.Component<NewGameProps> {
                             )}
                         </select>
                     </div>
+                    <div>
+                        <button disabled={!allowNewGame} onClick={this.startGame}>Start Game</button>
+                    </div>
                 </div>
             </InnerPage>
         );
@@ -54,5 +71,13 @@ export default class NewGame extends React.Component<NewGameProps> {
 
     private handleGameChange = (eventArgs: any) => {
         this.props.gameStore.selectGame(eventArgs.target.value);
+    }
+    
+    private startGame = () => {
+        this.setState(() => {
+            return {
+                gameStarted: true
+            };
+        });
     }
 }

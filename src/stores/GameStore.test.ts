@@ -65,4 +65,20 @@ describe("GameStore", () => {
         expect(gameStore.selectedGame).toBe("Cricket");
 
     });
+
+    it("allow new game enabled when players selected", () => {
+        const players: Player[] = 
+        [ 
+            {
+                name: "Jane"
+            }
+        ];
+        
+        const playerStore = new PlayerStore(players);
+        const gameStore = new GameStore(playerStore);
+       
+        expect(gameStore.allowNewGame).toBe(false);
+        gameStore.selectPlayers([players[0]]);
+        expect(gameStore.allowNewGame).toBe(true);
+    });
 });

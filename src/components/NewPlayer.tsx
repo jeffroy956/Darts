@@ -40,7 +40,7 @@ export default class NewPlayer extends React.Component<NewPlayerProps, NewPlayer
                     />
                 }
             >
-                <div className="form-body">
+                <div>
                     <div className="form-field">
                         <i className="material-icons">person</i>
                         <input name="playerName" placeholder="Name *" onChange={this.handleNameChange} />

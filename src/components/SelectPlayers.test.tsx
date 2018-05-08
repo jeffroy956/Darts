@@ -24,7 +24,7 @@ describe("<SelectPlayers/>", () => {
     it("deselects player from game", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
         const gameStore = new GameStore(playerStore);
-        gameStore.selectPlayers([playerStore.players[0], playerStore.players[1]);
+        gameStore.selectPlayers([playerStore.players[0], playerStore.players[1]]);
 
         const selectPlayers = shallow(<SelectPlayers gameStore={gameStore}/>).dive();
 

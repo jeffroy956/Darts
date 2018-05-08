@@ -9,8 +9,6 @@ import PlayerList from "./PlayerList";
 
 interface SelectPlayersProps {
     gameStore: GameStore;
-//    onSelectionChanged?: (target: Player, selected: boolean) => void;
-
 }
 
 interface SelectedPlayersState {
