@@ -1,14 +1,17 @@
 import {shallow} from "enzyme";
 import * as React from "react";
-import GameStore from "../stores/GameStore";
+import Player from "../models/Player";
+import DartGameStore from "../stores/DartGameStore";
 import PlayerStore from "../stores/PlayerStore";
 import PlayerList, { PlayerListItem } from "./PlayerList";
 import SelectPlayers from "./SelectPlayers";
 
 describe("<SelectPlayers/>", () => {
     it("adds a player to game", () => {
-        const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new GameStore(playerStore);
+        const playerStore = new PlayerStore([new Player("Jeff"), new Player("Joe"), 
+            new Player("Dawn"), new Player("Lisa")]);
+        
+        const gameStore = new DartGameStore(playerStore);
         
         const selectPlayers = shallow(<SelectPlayers gameStore={gameStore}/>).dive();
 
@@ -22,8 +25,9 @@ describe("<SelectPlayers/>", () => {
     });
 
     it("deselects player from game", () => {
-        const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new GameStore(playerStore);
+        const playerStore = new PlayerStore([new Player("Jeff"), new Player("Joe"), 
+        new Player("Dawn"), new Player("Lisa")]);
+        const gameStore = new DartGameStore(playerStore);
         gameStore.selectPlayers([playerStore.players[0], playerStore.players[1]]);
 
         const selectPlayers = shallow(<SelectPlayers gameStore={gameStore}/>).dive();

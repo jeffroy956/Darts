@@ -1,7 +1,6 @@
 import { action, computed, IObservableArray, observable } from "mobx";
 import Player from "../models/Player";
 import PlayerStore from "./PlayerStore";
-import { computedDecorator } from "mobx/lib/api/computed";
 
 export default class GameStore {
     public selectedPlayers: IObservableArray<Player> = observable.array([]);

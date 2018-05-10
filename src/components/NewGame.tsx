@@ -2,14 +2,14 @@ import { inject, observer } from "mobx-react";
 import * as React from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import GameStore from "../stores/GameStore";
+import DartGameStore from "../stores/DartGameStore";
 import InnerPage from "./InnerPage";
 import PageHeader from "./PageHeader";
 
 require("./NewGame.scss");
 
 interface NewGameProps {
-    gameStore?: GameStore;
+    gameStore?: DartGameStore;
 }
 
 interface NewGameState {
@@ -72,7 +72,7 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
     private handleGameChange = (eventArgs: any) => {
         this.props.gameStore.selectGame(eventArgs.target.value);
     }
-    
+
     private startGame = () => {
         this.setState(() => {
             return {

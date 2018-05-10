@@ -55,6 +55,10 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
             this.state = {
                 selected: props.selectedPlayers.some((sp) => sp.name === props.player.name)
             };
+        } else {
+            this.state = {
+                selected: false
+            };
         }
     }
 

@@ -1,6 +1,15 @@
+import { IObservableArray } from "mobx";
+import { observer } from "mobx-react";
 import * as React from "react";
+import Player from "../models/Player";
 
-export default class ScoreBoard extends React.Component<{}> {
+interface ScoreboardProps {
+    players: IObservableArray<Player>;
+    // game: Game;
+}
+
+@observer
+export default class Scoreboard extends React.Component<{}> {
     public render() {
         return(
             <div>

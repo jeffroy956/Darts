@@ -1,3 +1,6 @@
-export default interface Player {
-    name: string;
+export default class Player {
+    public name: string;
+    public constructor(name: string) {
+        this.name = name;
+    }
 }

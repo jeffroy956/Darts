@@ -5,14 +5,7 @@ import PlayerList, {PlayerListItem} from "./PlayerList";
 
 describe("<PlayersList/>", () => {
     it("renders a list of players", () => {
-        const players: Player[] = [
-            {
-                name: "Jeff"
-            },
-            {
-                name: "Mary"
-            }
-        ];
+        const players: Player[] = [new Player("Jeff"), new Player("Mary")];
 
         const playerList = shallow(<PlayerList players={players}/>);
 
@@ -22,11 +15,7 @@ describe("<PlayersList/>", () => {
     });
 
     it("renders a list of players and allows selection", () => {
-        const players: Player[] = [
-            {
-                name: "Mike"
-            }
-        ];
+        const players: Player[] = [new Player("Mike")];
 
         const playerList = shallow(<PlayerList players={players} allowSelection={true} />);
 
@@ -36,14 +25,7 @@ describe("<PlayersList/>", () => {
     });
 
     it("initially sets selected players", () => {
-        const players: Player[] = [
-            {
-                name: "Mike"
-            },
-            {
-                name: "Amanda"
-            }
-        ];
+        const players: Player[] = [new Player("Mike"), new Player("Amanda")];
 
         const playerList = shallow(
             <PlayerList 
@@ -61,14 +43,7 @@ describe("<PlayersList/>", () => {
     });
 
     it("selects a player", () => {
-        const players: Player[] = [
-            {
-                name: "Mike"
-            },
-            {
-                name: "Amanda"
-            }
-        ];
+        const players: Player[] = [new Player("Mike"), new Player("Amanda")];
 
         const onSelectionChanged = jest.fn();
 

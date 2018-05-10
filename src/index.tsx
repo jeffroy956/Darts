@@ -10,7 +10,7 @@ import NewPlayer from "./components/NewPlayer";
 import PlayerManagement from "./components/PlayerManagement";
 import ScoreBoard from "./components/Scoreboard";
 import SelectPlayers from "./components/SelectPlayers";
-import GameStore from "./stores/GameStore";
+import DartGameStore from "./stores/DartGameStore";
 import PlayerStore from "./stores/PlayerStore";
 
 require("./Index.scss");
@@ -26,7 +26,7 @@ const playerStore = new PlayerStore([
     }
 ]);
 
-const gameStore = new GameStore(playerStore);
+const gameStore = new DartGameStore(playerStore);
 
 const stores = {
     playerStore,

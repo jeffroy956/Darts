@@ -1,5 +1,5 @@
 import Player from "../models/Player";
-import GameStore from "./GameStore";
+import DartGameStore from "./DartGameStore";
 import PlayerStore from "./PlayerStore";
 
 describe("GameStore", () => {
@@ -12,7 +12,7 @@ describe("GameStore", () => {
         ];
 
         const playerStore = new PlayerStore(players);
-        const gameStore = new GameStore(playerStore);
+        const gameStore = new DartGameStore(playerStore);
 
         expect(gameStore.availablePlayers.length).toBe(1);
     });
@@ -35,7 +35,7 @@ describe("GameStore", () => {
         ];
 
         const playerStore = new PlayerStore(players);
-        const gameStore = new GameStore(playerStore);
+        const gameStore = new DartGameStore(playerStore);
         
         gameStore.selectPlayers([players[3], players[1]]);
 
@@ -58,7 +58,7 @@ describe("GameStore", () => {
         ];
 
         const playerStore = new PlayerStore(players);
-        const gameStore = new GameStore(playerStore);
+        const gameStore = new DartGameStore(playerStore);
 
         gameStore.selectGame("Cricket");
 
@@ -75,7 +75,7 @@ describe("GameStore", () => {
         ];
         
         const playerStore = new PlayerStore(players);
-        const gameStore = new GameStore(playerStore);
+        const gameStore = new DartGameStore(playerStore);
        
         expect(gameStore.allowNewGame).toBe(false);
         gameStore.selectPlayers([players[0]]);
