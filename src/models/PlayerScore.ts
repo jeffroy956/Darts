@@ -1,3 +1,4 @@
+import { observable } from "mobx";
 import { DartThrow } from "./DartThrow";
 import Player from "./Player";
 import Turn from "./Turn";
@@ -5,7 +6,7 @@ import Turn from "./Turn";
 export default class PlayerScore {
     public player: Player;
     public turns: Turn[] = [];
-    public fieldScores: number[];
+    @observable public fieldScores: number[];
     public dartsThrown: number = 0;
     public turnNumber: number = 0;
 

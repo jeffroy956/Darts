@@ -38,4 +38,25 @@ describe("ShanghaiScoring", () => {
         expect(gameState.shooter.total).toBe(4);
         expect(gameState.shooter.fieldScores[1]).toBe(3);
     });
+
+    it("scores a double hit for second shooter", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+        const shanghaiScoring = new ShanghaiScoring();
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, shanghaiScoring.ScoringFieldSize),
+            new PlayerScore(player2, shanghaiScoring.ScoringFieldSize)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Double);
+
+        expect(playerScores[1].fieldScores[0]).toBe(2);
+    });
+
 });

@@ -3,13 +3,13 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import Player from "../models/Player";
 
-interface BaseballFieldLayoutProps {
+interface ShanghaiLayoutProps {
     players: Player[];
-    innings: number;
+    rounds: number;
 }
 
 @observer
-export default class BaseballFieldLayout extends React.Component<BaseballFieldLayoutProps> {
+export default class ShanghaiLayout extends React.Component<ShanghaiLayoutProps> {
     public render() {
         return(
             <div className="game-layout">

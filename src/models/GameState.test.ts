@@ -96,6 +96,6 @@ describe("GameState", () => {
         });
 
         expect(gameState.shooter).toBeDefined();
-        expect(gameState.shooter.player.name).toBe("One");
+        expect(gameState.shooterName).toBe("One");
     });
 });
