@@ -1,4 +1,4 @@
-import { observable } from "mobx";
+import { computed, observable } from "mobx";
 import { DartThrow } from "./DartThrow";
 import Player from "./Player";
 import Turn from "./Turn";
@@ -18,6 +18,7 @@ export default class PlayerScore {
         this.fieldScores = Array(fieldSize).fill(0);
     }
 
+    @computed
     public get total(): number {
         return this.fieldScores.reduce((total, value) => total + value);
     }

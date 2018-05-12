@@ -11,8 +11,12 @@ export default class ShanghaiScoring extends DartScoring {
             modifier
         };
     }
-    public get ScoringFieldSize(): number {
+    public get scoringFieldSize(): number {
         return 7;
+    }
+
+    public get gameType(): string {
+        return "shanghai";
     }
 
 }

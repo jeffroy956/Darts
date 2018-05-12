@@ -2,13 +2,13 @@ import { inject } from "mobx-react";
 import * as React from "react";
 import { Redirect } from "react-router";
 import Player from "../models/Player";
-import GameStore from "../stores/GameStore";
+import DartGameStore from "../stores/DartGameStore";
 import InnerPage from "./InnerPage";
 import PageHeader from "./PageHeader";
 import PlayerList from "./PlayerList";
 
 interface SelectPlayersProps {
-    gameStore: GameStore;
+    dartGameStore: DartGameStore;
 }
 
 interface SelectedPlayersState {
@@ -16,18 +16,18 @@ interface SelectedPlayersState {
     closeSelection: boolean;
 }
 
-@inject("gameStore")
+@inject("dartGameStore")
 export default class SelectPlayers extends React.Component<SelectPlayersProps, SelectedPlayersState> {
     public constructor(props) {
         super(props);
-        const {selectedPlayers} = this.props.gameStore;
+        const {selectedPlayers} = this.props.dartGameStore;
         this.state = {
             selectedPlayers: [...selectedPlayers],
             closeSelection: false
         };
     }
     public render() {
-        const {availablePlayers, selectedPlayers} = this.props.gameStore;
+        const {availablePlayers, selectedPlayers} = this.props.dartGameStore;
         
         if (this.state.closeSelection ) {
             return <Redirect to="/new-game" />;
@@ -69,7 +69,7 @@ export default class SelectPlayers extends React.Component<SelectPlayersProps, S
         });
     }
     private handleButtonClick = () => {
-        this.props.gameStore.selectPlayers(this.state.selectedPlayers);
+        this.props.dartGameStore.selectPlayers(this.state.selectedPlayers);
         this.setState( () => {
             return {
                 closeSelection: true

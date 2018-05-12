@@ -4,12 +4,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Route, Switch } from "react-router";
 import { BrowserRouter, HashRouter } from "react-router-dom";
+import DartGame from "./components/DartGame";
 import MainMenu from "./components/MainMenu";
 import NewGame from "./components/NewGame";
 import NewPlayer from "./components/NewPlayer";
 import PlayerManagement from "./components/PlayerManagement";
-import ScoreBoard from "./components/Scoreboard";
 import SelectPlayers from "./components/SelectPlayers";
+import Player from "./models/Player";
 import DartGameStore from "./stores/DartGameStore";
 import PlayerStore from "./stores/PlayerStore";
 
@@ -17,20 +18,13 @@ require("./Index.scss");
 
 // replaces mobx useStrict:
 configure({enforceActions: true});
-const playerStore = new PlayerStore([
-    {
-        name: "Jeff"
-    },
-    {
-        name: "Joe"
-    }
-]);
+const playerStore = new PlayerStore([new Player("Jeff"), new Player("Joe")]);
 
-const gameStore = new DartGameStore(playerStore);
+const dartGameStore = new DartGameStore(playerStore);
 
 const stores = {
     playerStore,
-    gameStore
+    dartGameStore
 };
 
 ReactDOM.render(
@@ -41,7 +35,7 @@ ReactDOM.render(
                 <Route path="/new-player" component={NewPlayer} />
                 <Route path="/new-game/select-players" component={SelectPlayers} />
                 <Route path="/new-game" component={NewGame} />
-                <Route path="/scoreboard" component={ScoreBoard} />
+                <Route path="/dart-game" component={DartGame} />
                 <Route path="/" component={MainMenu} />
             </Switch>
         </HashRouter>

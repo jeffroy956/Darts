@@ -7,37 +7,37 @@ import NewGame from "./NewGame";
 describe("<NewGame/>", () => {
     it("displays list of selected players", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new DartGameStore(playerStore);
+        const dartGameStore = new DartGameStore(playerStore);
 
-        gameStore.selectPlayers([playerStore.players[3], playerStore.players[2]]);
+        dartGameStore.selectPlayers([playerStore.players[3], playerStore.players[2]]);
 
-        const newGame = shallow(<NewGame gameStore={gameStore}/>);
+        const newGame = shallow(<NewGame dartGameStore={dartGameStore}/>);
         expect(newGame.dive().find(".new-game__players").find("span").text()).toBe("Lisa, Dawn");
     });
 
     it("displays no players selected message", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new DartGameStore(playerStore);
+        const dartGameStore = new DartGameStore(playerStore);
 
-        const newGame = shallow(<NewGame gameStore={gameStore}/>);
+        const newGame = shallow(<NewGame dartGameStore={dartGameStore}/>);
         expect(newGame.dive().find(".new-game__players").find("span").text()).toBe("No players selected.");
     });
 
-    it("selects cricket as a game", () => {
+    it("selects shanghai as a game", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new DartGameStore(playerStore);
+        const dartGameStore = new DartGameStore(playerStore);
 
-        const newGame = shallow(<NewGame gameStore={gameStore}/>);
-        newGame.dive().find("select").simulate("change", {target: {value: "Cricket"}});
+        const newGame = shallow(<NewGame dartGameStore={dartGameStore}/>);
+        newGame.dive().find("select").simulate("change", {target: {value: "shanghai"}});
 
-        expect(gameStore.selectedGame).toBe("Cricket");
+        expect(dartGameStore.selectedGame).toBe("shanghai");
     });
 
     it("disables start game button when no players selected", () => {
         const playerStore = new PlayerStore([{name: "Jeff"}, {name: "Joe"}, {name: "Dawn"}, {name: "Lisa"}]);
-        const gameStore = new DartGameStore(playerStore);
+        const dartGameStore = new DartGameStore(playerStore);
 
-        const newGame = shallow(<NewGame gameStore={gameStore}/>);
+        const newGame = shallow(<NewGame dartGameStore={dartGameStore}/>);
 
         const startButton = newGame.dive().find("button");
 

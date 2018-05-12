@@ -8,5 +8,6 @@ export default abstract class DartScoring implements DartScoring {
     }
 
     protected abstract getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow;
-    public abstract get ScoringFieldSize(): number;
+    public abstract get scoringFieldSize(): number;
+    public abstract get gameType(): string;
 }

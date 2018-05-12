@@ -9,14 +9,14 @@ import PageHeader from "./PageHeader";
 require("./NewGame.scss");
 
 interface NewGameProps {
-    gameStore?: DartGameStore;
+    dartGameStore?: DartGameStore;
 }
 
 interface NewGameState {
     gameStarted: boolean;
 }
 
-@inject("gameStore")
+@inject("dartGameStore")
 @observer
 export default class NewGame extends React.Component<NewGameProps, NewGameState> {
     public constructor(props) {
@@ -29,9 +29,9 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
 
     public render() {
         if (this.state.gameStarted) {
-            return <Redirect to="/scoreboard" />;
+            return <Redirect to="/dart-game" />;
         }
-        const {selectedPlayers, availableGames, selectedGame, allowNewGame} = this.props.gameStore;
+        const {selectedPlayers, availableGames, selectedGame, allowNewGame} = this.props.dartGameStore;
         return (
             <InnerPage 
                 pageHeader={
@@ -70,10 +70,11 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
     }
 
     private handleGameChange = (eventArgs: any) => {
-        this.props.gameStore.selectGame(eventArgs.target.value);
+        this.props.dartGameStore.selectGame(eventArgs.target.value);
     }
 
     private startGame = () => {
+        this.props.dartGameStore.startGame();
         this.setState(() => {
             return {
                 gameStarted: true

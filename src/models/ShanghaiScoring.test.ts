@@ -10,7 +10,7 @@ describe("ShanghaiScoring", () => {
         const shanghaiScoring = new ShanghaiScoring();
 
         const playerScores: PlayerScore[] = [
-            new PlayerScore(player1, shanghaiScoring.ScoringFieldSize)
+            new PlayerScore(player1, shanghaiScoring.scoringFieldSize)
         ];
 
         const gameState = new GameState(playerScores);
@@ -25,7 +25,7 @@ describe("ShanghaiScoring", () => {
         const shanghaiScoring = new ShanghaiScoring();
 
         const playerScores: PlayerScore[] = [
-            new PlayerScore(player1, shanghaiScoring.ScoringFieldSize)
+            new PlayerScore(player1, shanghaiScoring.scoringFieldSize)
         ];
 
         const gameState = new GameState(playerScores);
@@ -45,8 +45,8 @@ describe("ShanghaiScoring", () => {
         const shanghaiScoring = new ShanghaiScoring();
 
         const playerScores: PlayerScore[] = [
-            new PlayerScore(player1, shanghaiScoring.ScoringFieldSize),
-            new PlayerScore(player2, shanghaiScoring.ScoringFieldSize)
+            new PlayerScore(player1, shanghaiScoring.scoringFieldSize),
+            new PlayerScore(player2, shanghaiScoring.scoringFieldSize)
         ];
 
         const gameState = new GameState(playerScores);
