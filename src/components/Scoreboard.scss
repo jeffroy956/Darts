@@ -1,0 +1,19 @@
+@import "../variables.scss";
+
+.scoreboard {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid $primaryBorderColor;
+        min-width: 50px;
+    }
+    th {
+        text-align: center;
+    }
+    td {
+        padding: $standardPadding;
+        text-align: right;
+    }
+}

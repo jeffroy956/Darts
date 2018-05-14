@@ -2,21 +2,22 @@ import * as React from "react";
 import { ThrowModifier } from "../models/ThrowModifier";
 
 require("./Keypad.scss");
+require("./HitMissKeypad.scss");
 
 interface HitMissKeypadProps {
     undo: () => void;
-    scoreThrow: (modifier: ThrowModifier) => void;
+    scoreThrow: (boardNumber: number, modifier: ThrowModifier) => void;
 }
 
 export default class HitMissKeypad extends React.Component<HitMissKeypadProps> {
     public render() {
         return (
-            <div className="key-pad">
+            <div className="key-pad key-pad--hit-miss">
                 <button onClick={this.miss}>
                     Miss
                 </button>
                 <button onClick={this.singleHit}>
-                    Single
+                    Hit
                 </button>
                 <button onClick={this.doubleHit}>
                     Double
@@ -32,19 +33,19 @@ export default class HitMissKeypad extends React.Component<HitMissKeypadProps> {
     }
 
     private miss = () => {
-        this.props.scoreThrow(ThrowModifier.Miss);
+        this.props.scoreThrow(0, ThrowModifier.Miss);
     }
 
     private singleHit = () => {
-        this.props.scoreThrow(ThrowModifier.Single);
+        this.props.scoreThrow(0, ThrowModifier.Single);
     }
 
     private doubleHit = () => {
-        this.props.scoreThrow(ThrowModifier.Double);
+        this.props.scoreThrow(0, ThrowModifier.Double);
     }
 
     private tripleHit = () => {
-        this.props.scoreThrow(ThrowModifier.Triple);
+        this.props.scoreThrow(0, ThrowModifier.Triple);
     }
 
     private undo = () => {

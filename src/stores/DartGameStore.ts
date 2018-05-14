@@ -4,6 +4,7 @@ import GameState from "../models/GameState";
 import Player from "../models/Player";
 import PlayerScore from "../models/PlayerScore";
 import ShanghaiScoring from "../models/ShanghaiScoring";
+import { ThrowModifier } from "../models/ThrowModifier";
 import PlayerStore from "./PlayerStore";
 
 export default class DartGameStore {
@@ -46,6 +47,11 @@ export default class DartGameStore {
             const playerScores = this.selectedPlayers.map((sp) => new PlayerScore(sp, scoring.scoringFieldSize));
             this.gameState = new GameState(playerScores);
         }
+    }
+
+    @action
+    public scoreThrow = (boardNumber: number, modifier: ThrowModifier): void => {
+        this.dartScoring.scoreThrow(this.gameState, boardNumber, modifier);
     }
 
     private createGameScoring(game: string) {

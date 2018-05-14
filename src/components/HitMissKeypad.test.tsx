@@ -10,7 +10,7 @@ describe("<HitMissKeypad />", () => {
 
         hitMissKeyPad.find("button").at(1).simulate("click");
 
-        expect(scoreSpy).toHaveBeenCalledWith(ThrowModifier.Single);
+        expect(scoreSpy).toHaveBeenCalledWith(0, ThrowModifier.Single);
     });
 
     it("records an undo", () => {

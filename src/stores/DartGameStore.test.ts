@@ -1,4 +1,5 @@
 import Player from "../models/Player";
+import { ThrowModifier } from "../models/ThrowModifier";
 import DartGameStore from "./DartGameStore";
 import PlayerStore from "./PlayerStore";
 
@@ -71,6 +72,20 @@ describe("DartGameStore", () => {
         expect(gameStore.dartScoring).toBeTruthy();
         expect(gameStore.dartScoring.gameType).toBe("shanghai");
         expect(gameStore.gameState.shooter.fieldScores.length).toBe(7);
+    });
+
+    it("scores a dart throw", () => {
+        const players: Player[] = [new Player("One"), new Player("Two")];
+        const playerStore = new PlayerStore(players);
+        const gameStore = new DartGameStore(playerStore);
+
+        gameStore.selectPlayers(players);
+        gameStore.selectGame("shanghai");
+        gameStore.startGame();
+
+        gameStore.scoreThrow(0, ThrowModifier.Triple);
+        expect(gameStore.gameState.shooter.total).toBe(3);
+        
     });
 
 });

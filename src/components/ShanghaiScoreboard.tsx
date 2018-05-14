@@ -4,6 +4,8 @@ import * as React from "react";
 import GameState from "../models/GameState";
 import Player from "../models/Player";
 
+require("./Scoreboard.scss");
+
 interface ShanghaiScoreboardProps {
     gameState: GameState;
 }
