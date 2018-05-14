@@ -1,8 +1,8 @@
-import { ThrowModifier } from "./DartThrow";
 import GameState from "./GameState";
 import Player from "./Player";
 import PlayerScore from "./PlayerScore";
 import ShanghaiScoring from "./ShanghaiScoring";
+import { ThrowModifier } from "./ThrowModifier";
 
 describe("ShanghaiScoring", () => {
     it("score single hit for first dart thrown", () => {

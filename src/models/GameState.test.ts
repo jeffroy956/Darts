@@ -1,7 +1,7 @@
-import { ThrowModifier } from "./DartThrow";
 import GameState from "./GameState";
 import Player from "./Player";
 import PlayerScore from "./PlayerScore";
+import { ThrowModifier } from "./ThrowModifier";
 
 describe("GameState", () => {
     it("Records throw", () => {

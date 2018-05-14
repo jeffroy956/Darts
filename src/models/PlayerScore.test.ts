@@ -1,7 +1,8 @@
 import Player from "./Player";
 import PlayerScore from "./PlayerScore";
 // tslint:disable-next-line:ordered-imports
-import { DartThrow, ThrowModifier } from "./DartThrow";
+import { DartThrow } from "./DartThrow";
+import { ThrowModifier } from "./ThrowModifier";
 
 describe("PlayerScore", () => {
     it("initializes with field size set", () => {

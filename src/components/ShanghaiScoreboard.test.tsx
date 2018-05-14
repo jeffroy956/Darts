@@ -1,9 +1,9 @@
 import {shallow} from "enzyme";
 import * as React from "react";
-import { ThrowModifier } from "../models/DartThrow";
 import GameState from "../models/GameState";
 import Player from "../models/Player";
 import PlayerScore from "../models/PlayerScore";
+import { ThrowModifier } from "../models/ThrowModifier";
 import ShanghaiScoreboard, {ShanghaiPlayerScoreboard} from "./ShanghaiScoreboard";
 
 describe("<ShanghaiScoreboard/>", () => {

@@ -1,6 +1,7 @@
 import DartScoring from "./DartScoring";
-import { DartThrow, ThrowModifier } from "./DartThrow";
+import { DartThrow } from "./DartThrow";
 import GameState from "./GameState";
+import { ThrowModifier } from "./ThrowModifier";
 
 export default class ShanghaiScoring extends DartScoring {
 

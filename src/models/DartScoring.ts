@@ -1,5 +1,6 @@
-import { DartThrow, ThrowModifier } from "./DartThrow";
+import { DartThrow } from "./DartThrow";
 import GameState from "./GameState";
+import { ThrowModifier } from "./ThrowModifier";
 
 export default abstract class DartScoring implements DartScoring {
     public scoreThrow(gameState: GameState, boardNumber: number, modifier: ThrowModifier): void {
