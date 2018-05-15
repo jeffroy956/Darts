@@ -5,7 +5,12 @@
 html {
     box-sizing: border-box;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    color: $lightFontColor;
+    color: $darkFontColor;
+}
+
+button {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    color: #fff;
 }
 
 body {

@@ -7,7 +7,7 @@ export default class PlayerScore {
     public player: Player;
     public turns: Turn[] = [];
     @observable public fieldScores: number[];
-    public dartsThrown: number = 0;
+    @observable public dartsThrown: number = 0;
     public turnNumber: number = 0;
 
     private activeTurn: Turn;

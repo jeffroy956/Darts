@@ -7,7 +7,15 @@
     }
     td, th {
         border: 1px solid $primaryBorderColor;
-        min-width: 50px;
+        &:first-child {
+            border: none;
+        }
+        &:last-child {
+            border: none;
+        }
+    }
+    .field-score {
+        width: 50px;
     }
     th {
         text-align: center;
@@ -15,5 +23,24 @@
     td {
         padding: $standardPadding;
         text-align: right;
+        height: 34px;
+    }
+
+    .player-indicator {
+        width: 10px;
+        i {
+            display: none;
+        }
+    }
+
+    .player--active {
+        .player-indicator {
+            i {
+                display: block;
+            }
+        }
+    }
+    .player-name {
+        text-align: left;
     }
 }

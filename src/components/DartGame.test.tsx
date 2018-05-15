@@ -15,7 +15,9 @@ describe("<DartGame />", () => {
         ]);
         const gameStore = new DartGameStore(playerStore);
         gameStore.selectGame("shanghai");
-
+        gameStore.selectPlayers(playerStore.players);
+        gameStore.startGame();
+        
         const dartGame = shallow(<DartGame dartGameStore={gameStore} />).dive();
 
         const layout = dartGame.find(ShanghaiLayout);

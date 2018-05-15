@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ThrowModifier } from "../models/ThrowModifier";
 
-require("./Keypad.scss");
 require("./HitMissKeypad.scss");
 
 interface HitMissKeypadProps {

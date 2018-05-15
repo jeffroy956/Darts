@@ -1,8 +1,7 @@
+@import "./Keypad.scss";
+
 .key-pad--hit-miss {
     button {
         width: 20%;
-        padding: 10px 0;
-        min-width: 0;
-        cursor: pointer;
     }
 }

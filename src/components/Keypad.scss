@@ -1,4 +1,13 @@
 .key-pad {
     display: flex;
     flex-wrap: wrap;
+
+    button {
+        padding: 10px 0;
+        min-width: 0;
+        cursor: pointer;
+        border: 1px solid #fff;
+        text-transform: uppercase;
+        color: #fff;
+    }
 }

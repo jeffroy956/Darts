@@ -1,0 +1,13 @@
+@import "../variables.scss";
+
+.game-layout {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+
+    .scoreboard {
+        margin-top: $standardPadding * 2;
+        flex-grow: 1;
+    }
+}
