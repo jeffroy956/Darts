@@ -22,7 +22,12 @@ export default class ShanghaiLayout extends React.Component<ShanghaiLayoutProps>
             <div className="game-layout">
                 <PageHeader title="Shanghai" backLinkTo="/new-game" />
                 <ShanghaiScoreboard gameState={gameState} />
-                <HitMissKeypad undo={null} scoreThrow={scoreThrow} />
+                {gameState.gameCompleted ?
+                    <div className="message">{gameState.winner.name} has won the match!</div>
+                    : 
+                    <HitMissKeypad undo={null} scoreThrow={scoreThrow} />
+                }
+                
             </div>
         );
     }
