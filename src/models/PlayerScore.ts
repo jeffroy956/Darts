@@ -23,6 +23,10 @@ export default class PlayerScore {
         return this.fieldScores.reduce((total, value) => total + value);
     }
 
+    public get name(): string {
+        return this.player.name;
+    }
+
     public tally(dartThrow: DartThrow) {
         this.fieldScores[dartThrow.scoreIndex] += dartThrow.basePointValue * dartThrow.modifier;
         this.dartsThrown++;

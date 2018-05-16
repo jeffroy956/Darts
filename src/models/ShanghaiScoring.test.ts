@@ -59,4 +59,40 @@ describe("ShanghaiScoring", () => {
         expect(playerScores[1].fieldScores[0]).toBe(2);
     });
 
+    it("indicates the game is complete", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+        const shanghaiScoring = new ShanghaiScoring();
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, shanghaiScoring.scoringFieldSize),
+            new PlayerScore(player2, shanghaiScoring.scoringFieldSize)
+        ];
+
+        const gameState = new GameState(playerScores);
+        for (let i = 1; i <= 6; i++) {
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+    
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+            shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        }
+
+        expect(gameState.gameCompleted).toBe(false);
+
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Miss);
+        expect(gameState.gameCompleted).toBe(false);
+
+        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Single);
+        expect(gameState.gameCompleted).toBe(true);
+        expect(gameState.winner.name).toBe("Two");
+    });
+
 });

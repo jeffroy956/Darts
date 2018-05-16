@@ -6,6 +6,9 @@ import PlayerScore from "./PlayerScore";
 export default class GameState {
     public playerScores: PlayerScore[];
     @observable public shooterName: string;
+    @observable public gameCompleted: boolean = false;
+    public winner: PlayerScore = null;
+
     private shooterIndex: number = 0;
     private throwCount: number = 0;
 
@@ -18,6 +21,11 @@ export default class GameState {
         return this.playerScores[this.shooterIndex];
     }
 
+    public setWinner(winner: PlayerScore): void {
+        this.winner = winner;
+        this.gameCompleted = true;
+    }
+    
     public recordThrow(dartThrow: DartThrow): void {
         this.shooter.tally(dartThrow);
         this.throwCount++;
