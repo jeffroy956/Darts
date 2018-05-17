@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import * as React from "react";
+import { PlayerFakeStorage } from "../api/PlayerStorage";
 import GameState from "../models/GameState";
 import Player from "../models/Player";
 import PlayerScore from "../models/PlayerScore";
@@ -12,7 +13,7 @@ import ShanghaiScoreboard from "./ShanghaiScoreboard";
 
 describe("<ShanghaiLayout/>", () => {
     it("has Shanghai style player scoreboard", () => {
-        const playerStore = new PlayerStore([new Player("One")]);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
         gameStore.selectGame("shanghai");
         gameStore.selectPlayers([playerStore.players[0]]);
@@ -25,7 +26,7 @@ describe("<ShanghaiLayout/>", () => {
     });
 
     it("has hit/miss style keypad", () => {
-        const playerStore = new PlayerStore([new Player("One")]);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
         gameStore.selectGame("shanghai");
         gameStore.selectPlayers([playerStore.players[0]]);
@@ -38,7 +39,7 @@ describe("<ShanghaiLayout/>", () => {
     });
 
     it("shows the winner player and hides the scorepad", () => {
-        const playerStore = new PlayerStore([new Player("One"), new Player("Two")]);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
         gameStore.selectGame("shanghai");
         gameStore.selectPlayers(playerStore.players);

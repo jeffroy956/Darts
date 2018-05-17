@@ -1,3 +1,4 @@
+import { PlayerFakeStorage } from "../api/PlayerStorage";
 import Player from "../models/Player";
 import { ThrowModifier } from "../models/ThrowModifier";
 import DartGameStore from "./DartGameStore";
@@ -5,29 +6,26 @@ import PlayerStore from "./PlayerStore";
 
 describe("DartGameStore", () => {
     it("loads with list of players", () => {
-        const players: Player[] = [new Player("Jane")];
-
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage([new Player("Jane")]));
         const gameStore = new DartGameStore(playerStore);
 
         expect(gameStore.availablePlayers.length).toBe(1);
     });
 
     it("selects players for game", () => {
-        const players: Player[] = [new Player("Jane"), new Player("Joe"), new Player("Mike"), new Player("Mary")];
 
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage(
+            [new Player("Jane"), new Player("Joe"), new Player("Mike"), new Player("Mary")]));
         const gameStore = new DartGameStore(playerStore);
         
-        gameStore.selectPlayers([players[3], players[1]]);
+        gameStore.selectPlayers([playerStore.players[3], playerStore.players[1]]);
 
         expect(gameStore.selectedPlayers[0].name).toBe("Mary");
         expect(gameStore.selectedPlayers[1].name).toBe("Joe");
     });
 
     it("selects type of darts game", () => {
-        const players: Player[] = [new Player("Jane")];
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
 
         gameStore.selectGame("shanghai");
@@ -36,22 +34,19 @@ describe("DartGameStore", () => {
     });
 
     it("allow new game enabled when players selected", () => {
-        const players: Player[] = [new Player("Jane")];
-        
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
        
         expect(gameStore.allowNewGame).toBe(false);
-        gameStore.selectPlayers([players[0]]);
+        gameStore.selectPlayers([playerStore.players[0]]);
         expect(gameStore.allowNewGame).toBe(true);
     });
 
     it("initializes game state when dart game and players selected", () => {
-        const players: Player[] = [new Player("One"), new Player("Two")];
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
 
-        gameStore.selectPlayers(players);
+        gameStore.selectPlayers(playerStore.players);
         gameStore.selectGame("shanghai");
         gameStore.startGame();
 
@@ -61,11 +56,10 @@ describe("DartGameStore", () => {
     });
 
     it("initializes shanghai scoring game", () => {
-        const players: Player[] = [new Player("One"), new Player("Two")];
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
 
-        gameStore.selectPlayers(players);
+        gameStore.selectPlayers(playerStore.players);
         gameStore.selectGame("shanghai");
         gameStore.startGame();
 
@@ -75,11 +69,10 @@ describe("DartGameStore", () => {
     });
 
     it("scores a dart throw", () => {
-        const players: Player[] = [new Player("One"), new Player("Two")];
-        const playerStore = new PlayerStore(players);
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
         const gameStore = new DartGameStore(playerStore);
 
-        gameStore.selectPlayers(players);
+        gameStore.selectPlayers(playerStore.players);
         gameStore.selectGame("shanghai");
         gameStore.startGame();
 

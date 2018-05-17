@@ -2,6 +2,7 @@ import { mount, shallow } from "enzyme";
 import { Provider } from "mobx-react";
 import * as React from "react";
 import { MemoryRouter, Route, Switch } from "react-router";
+import { PlayerFakeStorage } from "../api/PlayerStorage";
 import PlayerStore from "../stores/PlayerStore";
 import IconButton from "./IconButton";
 import InnerPage from "./InnerPage";
@@ -13,7 +14,7 @@ describe("<NewPlayer/>", () => {
 
     beforeEach(() => {
         stores = {
-            playerStore: new PlayerStore([])
+            playerStore: new PlayerStore(new PlayerFakeStorage([]))
         };
     });
 

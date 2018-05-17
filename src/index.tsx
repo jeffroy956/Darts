@@ -4,6 +4,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Route, Switch } from "react-router";
 import { BrowserRouter, HashRouter } from "react-router-dom";
+import { PlayerLocalStorage } from "./api/PlayerStorage";
 import DartGame from "./components/DartGame";
 import MainMenu from "./components/MainMenu";
 import NewGame from "./components/NewGame";
@@ -18,7 +19,7 @@ require("./Index.scss");
 
 // replaces mobx useStrict:
 configure({enforceActions: true});
-const playerStore = new PlayerStore([new Player("Jeff"), new Player("Joe")]);
+const playerStore = new PlayerStore(new PlayerLocalStorage());
 
 const dartGameStore = new DartGameStore(playerStore);
 
