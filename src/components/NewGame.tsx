@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DartGameStore from "../stores/DartGameStore";
 import InnerPage from "./InnerPage";
 import PageHeader from "./PageHeader";
+import TextButton from "./TextButton";
 
 require("./NewGame.scss");
 
@@ -62,7 +63,9 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
                         </select>
                     </div>
                     <div>
-                        <button disabled={!allowNewGame} onClick={this.startGame}>Start Game</button>
+                        <TextButton disabled={!allowNewGame} onClick={this.startGame}>
+                            Start Game
+                        </TextButton>
                     </div>
                 </div>
             </InnerPage>
