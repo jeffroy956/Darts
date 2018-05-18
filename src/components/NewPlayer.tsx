@@ -43,7 +43,12 @@ export default class NewPlayer extends React.Component<NewPlayerProps, NewPlayer
                 <div>
                     <div className="form-field">
                         <i className="material-icons">person</i>
-                        <input name="playerName" placeholder="Name *" onChange={this.handleNameChange} />
+                        <input 
+                            name="playerName" 
+                            placeholder="Name *" 
+                            autoFocus={true} 
+                            onChange={this.handleNameChange} 
+                        />
                     </div>
                 </div>
             </InnerPage>

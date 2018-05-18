@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import Player from "../models/Player";
+import IconButton from "./IconButton";
 
 require("./PlayerList.scss");
 
@@ -9,12 +10,13 @@ interface PlayerListProps {
     allowSelection?: boolean;
     selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
+    onDeleted?: (target: Player) => void;
 }
 
 @observer
 export default class PlayerList extends React.Component<PlayerListProps> {
     public render() {
-        const {players, allowSelection, selectedPlayers, onSelectionChanged} = this.props;
+        const {players, allowSelection, selectedPlayers, onSelectionChanged, onDeleted} = this.props;
         return(
             <div className="player-list">
                 <ul className="site-list">
@@ -27,6 +29,7 @@ export default class PlayerList extends React.Component<PlayerListProps> {
                                     selectedPlayers={selectedPlayers}
                                     allowSelection={allowSelection}
                                     onSelectionChanged={onSelectionChanged}
+                                    onDeleted={onDeleted}
                                 />
                             );
                         })
@@ -42,6 +45,7 @@ interface PlayerListItemProps {
     allowSelection?: boolean;
     selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
+    onDeleted?: (target: Player) => void;
 }
 
 interface PlayerListItemState {
@@ -76,9 +80,16 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
                     <span>
                         {this.props.player.name}
                     </span>
+                    {this.props.onDeleted &&
+                        <IconButton iconName="delete" clickCommand={this.handleDelete} />
+                    }
                 </label>
             </li>
         );        
+    }
+
+    private handleDelete = () => {
+        this.props.onDeleted(this.props.player);
     }
 
     private handleChange = () => {

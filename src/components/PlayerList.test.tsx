@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import * as React from "react";
 import Player from "../models/Player";
+import IconButton from "./IconButton";
 import PlayerList, {PlayerListItem} from "./PlayerList";
 
 describe("<PlayersList/>", () => {
@@ -62,6 +63,24 @@ describe("<PlayersList/>", () => {
         firstPlayerItem.find("input[type='checkbox']").simulate("change", { target: { checked: true } });
         
         expect(onSelectionChanged).toBeCalledWith(players[0], true);
+    });
+
+    it("deletes a player", () => {
+        const players: Player[] = [new Player("Mike"), new Player("Amanda")];
+
+        const onDeleted = jest.fn();
+
+        const playerList = shallow(
+            <PlayerList 
+                players={players}
+                onDeleted={onDeleted}
+            />
+        );
+
+        const firstPlayerItem = playerList.find(PlayerListItem).at(0).dive();
+        const deleteButton = firstPlayerItem.find(IconButton).last();
+        (deleteButton.dive().instance() as IconButton).buttonClicked({});
+        expect(onDeleted).toHaveBeenCalledWith(players[0]);
     });
 
 });
