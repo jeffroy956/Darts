@@ -15,7 +15,7 @@ interface PlayerManagementProps {
 @inject("playerStore")
 export default class PlayerManagement extends React.Component<PlayerManagementProps> {
     public render() {
-        const players: Player[] = (this.props.playerStore ? this.props.playerStore.players : null);
+        const {players, deletePlayer} = this.props.playerStore;
 
         return (
             <InnerPage 
@@ -25,7 +25,7 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
                     acceptElement={<IconButton iconName="add" linkTo="/new-player" />} 
                 />}
             >
-                <PlayerList players={players} />
+                <PlayerList players={players} onDeleted={deletePlayer} />
             </InnerPage>
         );
     }

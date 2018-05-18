@@ -16,4 +16,9 @@ export default class PlayerStore {
         this.players.push(player);
         this.playerStorage.save(this.players);
     }
+
+    @action public deletePlayer = (player: Player): void => {
+        this.players.remove(player);
+        this.playerStorage.save(this.players);
+    }
 }

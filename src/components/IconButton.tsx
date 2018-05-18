@@ -7,6 +7,7 @@ interface IconButtonProps {
     iconName: string;
     linkTo?: string;
     clickCommand?: () => void;
+    className?: string;
 }
 
 interface IconButtonState {
@@ -61,6 +62,9 @@ export default class IconButton extends React.Component<IconButtonProps, IconBut
 
     private getButtonClass() {
         let baseClass = "icon-button";
+        if (this.props.className) {
+            baseClass += " " + this.props.className;
+        }
         if (this.state.buttonActivated) {
             baseClass += " element--activated";
         }

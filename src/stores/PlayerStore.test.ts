@@ -1,4 +1,5 @@
 import { PlayerFakeStorage } from "../api/PlayerStorage";
+import Player from "../models/Player";
 import PlayerStore from "./PlayerStore";
 
 describe("PlayerStore", () => {
@@ -27,4 +28,17 @@ describe("PlayerStore", () => {
 
         expect(saveSpy).toHaveBeenCalledWith(playerStore.players);
     });
+
+    it("deletes a Player", () => {
+        const storage = new PlayerFakeStorage([new Player("One"), new Player("Two")]);
+        const saveSpy = spyOn(storage, "save");
+        const playerStore: PlayerStore = new PlayerStore(storage);
+
+        playerStore.deletePlayer(playerStore.players[0]);
+
+        expect(playerStore.players.length).toBe(1);
+
+        expect(saveSpy).toHaveBeenCalledWith(playerStore.players);
+    });
+    
 });

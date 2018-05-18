@@ -80,10 +80,10 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
                     <span>
                         {this.props.player.name}
                     </span>
-                    {this.props.onDeleted &&
-                        <IconButton iconName="delete" clickCommand={this.handleDelete} />
-                    }
                 </label>
+                {this.props.onDeleted &&
+                    <IconButton iconName="delete" className="icon-button--secondary" clickCommand={this.handleDelete} />
+                }
             </li>
         );        
     }

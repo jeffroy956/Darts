@@ -25,6 +25,17 @@
     }
 }
 
+.icon-button--secondary {
+    .icon-button__icon {
+        width: 36px;
+        background-color: $lightGrey;
+        i {
+            font-size: 24px;
+            line-height: 36px;
+        }
+    }
+}
+
 
 .element--activated {
     .icon-button__icon {
@@ -35,6 +46,15 @@
         i {
             font-size: 27px;
             line-height: 47px;
+        }
+    }
+    &.icon-button--secondary {
+        .icon-button__icon {
+            width: 35px;
+            i {
+                font-size: 23px;
+                line-height: 35px;
+            }
         }
     }
 }

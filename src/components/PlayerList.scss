@@ -2,9 +2,14 @@
 
 .player-list {
     label {
+        flex-grow: 1;
         span {
             display: inline-block;
             margin-left: $standardPadding;
         }
+    }
+
+    li {
+        display: flex;
     }
 }
