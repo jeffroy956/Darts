@@ -1,5 +1,6 @@
 import {shallow} from "enzyme";
 import * as React from "react";
+import DartThrow from "../models/DartThrow";
 import GameState from "../models/GameState";
 import Player from "../models/Player";
 import PlayerScore from "../models/PlayerScore";
@@ -29,16 +30,9 @@ describe("<ShanghaiScoreboard/>", () => {
         ];
 
         const gameState = new GameState(playerScores);
-        gameState.shooter.tally({
-            basePointValue: 1,
-            modifier: ThrowModifier.Triple,
-            scoreIndex: 0
-        });
-        gameState.shooter.tally({
-            basePointValue: 1,
-            modifier: ThrowModifier.Single,
-            scoreIndex: 1
-        });
+        gameState.shooter.tally(new DartThrow(0, 1, ThrowModifier.Triple));
+        gameState.shooter.tally(new DartThrow(1, 1, ThrowModifier.Single));
+
         const scoreboard = shallow(<ShanghaiScoreboard gameState={gameState} />);
 
         const playerScoreboard = scoreboard.find(ShanghaiPlayerScoreboard);
@@ -55,16 +49,8 @@ describe("<ShanghaiScoreboard/>", () => {
         ];
 
         const gameState = new GameState(playerScores);
-        gameState.recordThrow({
-            basePointValue: 1,
-            modifier: ThrowModifier.Triple,
-            scoreIndex: 0
-        });
-        gameState.recordThrow({
-            basePointValue: 1,
-            modifier: ThrowModifier.Single,
-            scoreIndex: 1
-        });
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Triple));
+        gameState.recordThrow(new DartThrow(1, 1, ThrowModifier.Single));
 
         const scoreboard = shallow(<ShanghaiScoreboard gameState={gameState} />);
 
@@ -98,21 +84,9 @@ describe("<ShanghaiScoreboard/>", () => {
         ];
 
         const gameState = new GameState(playerScores);
-        gameState.recordThrow({
-            basePointValue: 1,
-            modifier: ThrowModifier.Triple,
-            scoreIndex: 0
-        });
-        gameState.recordThrow({
-            basePointValue: 1,
-            modifier: ThrowModifier.Triple,
-            scoreIndex: 0
-        });
-        gameState.recordThrow({
-            basePointValue: 1,
-            modifier: ThrowModifier.Single,
-            scoreIndex: 0
-        });
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Triple));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Triple));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
 
         const scoreboard = shallow(<ShanghaiScoreboard gameState={gameState} />);
         const playerScoreboard = scoreboard.find(ShanghaiPlayerScoreboard);

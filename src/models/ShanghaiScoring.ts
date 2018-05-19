@@ -1,5 +1,5 @@
 import DartScoring from "./DartScoring";
-import { DartThrow } from "./DartThrow";
+import DartThrow from "./DartThrow";
 import GameState from "./GameState";
 import { ThrowModifier } from "./ThrowModifier";
 
@@ -28,11 +28,7 @@ export default class ShanghaiScoring extends DartScoring {
         return totalDartsThrown >= expectedThrows;
     }
     protected getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow {
-        return  {
-            scoreIndex: (gameState.shooter.turnNumber),
-            basePointValue: 1,
-            modifier
-        };
+        return new DartThrow(gameState.shooter.turnNumber, 1, modifier);
     }
     public get scoringFieldSize(): number {
         return 7;

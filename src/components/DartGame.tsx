@@ -2,6 +2,7 @@ import { inject } from "mobx-react";
 import * as React from "react";
 import { Redirect } from "react-router";
 import DartGameStore from "../stores/DartGameStore";
+import AroundTheClockLayout from "./AroundTheClockLayout";
 import ShanghaiLayout from "./ShanghaiLayout";
 
 interface DartGameProps {
@@ -27,6 +28,8 @@ export default class DartGame extends React.Component<DartGameProps> {
         switch (dartGameStore.selectedGame) {
             case "shanghai":
                 return <ShanghaiLayout dartGameStore={dartGameStore} />;
+            case "aroundtheclock":
+                return <AroundTheClockLayout dartGameStore={dartGameStore} />;
         }
 
         return null;

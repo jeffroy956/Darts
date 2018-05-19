@@ -1,4 +1,4 @@
-import { DartThrow } from "./DartThrow";
+import DartThrow from "./DartThrow";
 import GameState from "./GameState";
 import { ThrowModifier } from "./ThrowModifier";
 

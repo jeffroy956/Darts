@@ -1,5 +1,5 @@
 import { observable } from "mobx";
-import { DartThrow } from "./DartThrow";
+import DartThrow from "./DartThrow";
 import Player from "./Player";
 import PlayerScore from "./PlayerScore";
 

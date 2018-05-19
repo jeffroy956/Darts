@@ -1,7 +1,6 @@
+import DartThrow from "./DartThrow";
 import Player from "./Player";
 import PlayerScore from "./PlayerScore";
-// tslint:disable-next-line:ordered-imports
-import { DartThrow } from "./DartThrow";
 import { ThrowModifier } from "./ThrowModifier";
 
 describe("PlayerScore", () => {
@@ -14,11 +13,7 @@ describe("PlayerScore", () => {
 
     it("tallys a single hit player score", () => {
         const playerScore = new PlayerScore(new Player("One"), 7);
-        const dartThrow: DartThrow = {
-            scoreIndex: 0,
-            basePointValue: 20,
-            modifier: ThrowModifier.Single
-        };
+        const dartThrow = new DartThrow(0, 20, ThrowModifier.Single);
 
         playerScore.tally(dartThrow);
 
@@ -27,11 +22,7 @@ describe("PlayerScore", () => {
 
     it("tallys a double hit player score", () => {
         const playerScore = new PlayerScore(new Player("One"), 5);
-        const dartThrow: DartThrow = {
-            scoreIndex: 0,
-            basePointValue: 20,
-            modifier: ThrowModifier.Double
-        };
+        const dartThrow = new DartThrow(0, 20, ThrowModifier.Double);
 
         playerScore.tally(dartThrow);
 
@@ -41,80 +32,32 @@ describe("PlayerScore", () => {
     it("tallying a throw logs the dart throw", () => {
         const playerScore = new PlayerScore(new Player("One"), 5);
 
-        playerScore.tally({
-            scoreIndex: 0,
-            basePointValue: 20,
-            modifier: ThrowModifier.Double
-        });
-        playerScore.tally({
-            scoreIndex: 1,
-            basePointValue: 19,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
+        playerScore.tally(new DartThrow(0, 20, ThrowModifier.Double));
+        playerScore.tally(new DartThrow(1, 19, ThrowModifier.Single));
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
         
         expect(playerScore.turns.length).toBe(1);
-        expect(playerScore.turns[0].throws).toEqual([{
-            scoreIndex: 0,
-            basePointValue: 20,
-            modifier: ThrowModifier.Double
-        },
-        {
-            scoreIndex: 1,
-            basePointValue: 19,
-            modifier: ThrowModifier.Single
-        },
-        {
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        }]);
+        expect(playerScore.turns[0].throws).toEqual([
+            new DartThrow(0, 20, ThrowModifier.Double),
+            new DartThrow(1, 19, ThrowModifier.Single),
+            new DartThrow(2, 18, ThrowModifier.Single)]);
+
         expect(playerScore.turns[0].scoreTotal).toBe(40 + 19 + 18);
     });
 
     it("tallying 7th throw has appropriate turn tracking", () => {
         const playerScore = new PlayerScore(new Player("One"), 5);
 
-        playerScore.tally({
-            scoreIndex: 0,
-            basePointValue: 20,
-            modifier: ThrowModifier.Double
-        });
-        playerScore.tally({
-            scoreIndex: 1,
-            basePointValue: 19,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
-        playerScore.tally({
-            scoreIndex: 2,
-            basePointValue: 18,
-            modifier: ThrowModifier.Single
-        });
-        
+        playerScore.tally(new DartThrow(0, 20, ThrowModifier.Double));
+        playerScore.tally(new DartThrow(1, 19, ThrowModifier.Single));
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
+
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
+
+        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
+
         expect(playerScore.turns.length).toBe(3);
         expect(playerScore.dartsThrown).toBe(7);
         expect(playerScore.total).toBe(40 + 19 + (18 * 5));

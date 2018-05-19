@@ -1,15 +1,11 @@
 import DartScoring from "./DartScoring";
-import { DartThrow } from "./DartThrow";
+import DartThrow from "./DartThrow";
 import GameState from "./GameState";
 import { ThrowModifier } from "./ThrowModifier";
 
 export default class AroundTheClockScoring extends DartScoring {
     protected getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow {
-        return {
-            scoreIndex: 0,
-            basePointValue: 1,
-            modifier
-        };
+        return new DartThrow(0, 1, modifier);
     }
     
     protected isComplete(gameState: GameState): boolean {

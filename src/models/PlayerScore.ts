@@ -1,5 +1,5 @@
 import { computed, observable } from "mobx";
-import { DartThrow } from "./DartThrow";
+import DartThrow from "./DartThrow";
 import Player from "./Player";
 import Turn from "./Turn";
 
@@ -10,12 +10,14 @@ export default class PlayerScore {
     @observable public dartsThrown: number = 0;
     public turnNumber: number = 0;
 
-    private activeTurn: Turn;
+    @observable public activeTurn: Turn;
     private throwCount: number = 0;
 
     public constructor(player: Player, fieldSize: number) {
         this.player = player;
         this.fieldScores = Array(fieldSize).fill(0);
+        this.activeTurn = new Turn();
+        this.turns.push(this.activeTurn);
     }
 
     @computed
@@ -30,7 +32,7 @@ export default class PlayerScore {
     public tally(dartThrow: DartThrow) {
         this.fieldScores[dartThrow.scoreIndex] += dartThrow.basePointValue * dartThrow.modifier;
         this.dartsThrown++;
-        if (this.throwCount === 0) {
+        if (this.dartsThrown > 1 && this.throwCount === 0) {
             this.activeTurn = new Turn();
             this.turns.push(this.activeTurn);
         }

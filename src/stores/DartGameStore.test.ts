@@ -81,4 +81,17 @@ describe("DartGameStore", () => {
         
     });
 
+    it("initializes around the clock scoring game", () => {
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
+        const gameStore = new DartGameStore(playerStore);
+
+        gameStore.selectPlayers(playerStore.players);
+        gameStore.selectGame("aroundtheclock");
+        gameStore.startGame();
+
+        expect(gameStore.dartScoring).toBeTruthy();
+        expect(gameStore.dartScoring.gameType).toBe("aroundtheclock");
+        expect(gameStore.gameState.shooter.fieldScores.length).toBe(1);
+    });
+
 });
