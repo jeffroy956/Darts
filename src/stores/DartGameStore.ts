@@ -9,7 +9,7 @@ import PlayerStore from "./PlayerStore";
 
 export default class DartGameStore {
     public selectedPlayers: IObservableArray<Player> = observable.array([]);
-    public availableGames: string[] = ["shanghai", "cricket"];
+    public availableGames: string[] = ["shanghai", "aroundtheclock", "cricket"];
     public gameState: GameState;
     public dartScoring: DartScoring;
 
