@@ -6,6 +6,7 @@ import DartGameStore from "../stores/DartGameStore";
 import PlayerStore from "../stores/PlayerStore";
 import PlayerList, { PlayerListItem } from "./PlayerList";
 import SelectPlayers from "./SelectPlayers";
+import TextButton from "./TextButton";
 
 describe("<SelectPlayers/>", () => {
     it("adds a player to game", () => {
@@ -19,7 +20,8 @@ describe("<SelectPlayers/>", () => {
         const playerCheckbox = selectPlayers.find(PlayerList).dive().find(PlayerListItem).at(0).dive().find("input");
         playerCheckbox.simulate("change", { target: { checked: true } });
 
-        selectPlayers.find("input[type='button']").simulate("click");
+        const selectButton = selectPlayers.find(TextButton).dive().instance() as TextButton;
+        selectButton.buttonClicked({});
 
         expect(dartGameStore.selectedPlayers.length).toBe(1);
         expect(dartGameStore.selectedPlayers[0].name).toBe("Jeff");
@@ -36,7 +38,8 @@ describe("<SelectPlayers/>", () => {
         const playerCheckbox = selectPlayers.find(PlayerList).dive().find(PlayerListItem).at(0).dive().find("input");
         playerCheckbox.simulate("change", { target: { checked: false } });
 
-        selectPlayers.find("input[type='button']").simulate("click");
+        const selectButton = selectPlayers.find(TextButton).dive().instance() as TextButton;
+        selectButton.buttonClicked({});
 
         expect(dartGameStore.selectedPlayers.length).toBe(1);
         expect(dartGameStore.selectedPlayers[0].name).toBe("Joe");

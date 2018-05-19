@@ -36,15 +36,18 @@ export default class TextButton extends React.Component<TextButtonProps, TextBut
 
     public render() {
         return(
-            <button 
-                className={this.getButtonClass()} 
-                onMouseDown={this.mouseDown} 
-                onClick={this.buttonClicked}
-                disabled={this.props.disabled}
-            >
-                <span>{this.props.children}</span>
+            <div className="text-button__wrapper">
+
+                <button 
+                    className={this.getButtonClass()} 
+                    onMouseDown={this.mouseDown} 
+                    onClick={this.buttonClicked}
+                    disabled={this.props.disabled}
+                >
+                    <span>{this.props.children}</span>
+                </button>
                 {this.state.buttonActivated && <span className="element-ripple" style={this.rippleStyle()} />}
-            </button>
+            </div>
         );
     }
 

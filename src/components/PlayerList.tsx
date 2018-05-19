@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import Player from "../models/Player";
 import IconButton from "./IconButton";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 require("./PlayerList.scss");
 
@@ -50,18 +51,22 @@ interface PlayerListItemProps {
 
 interface PlayerListItemState {
     selected: boolean;
+    confirmVisible: boolean;
 }
+
 // tslint:disable-next-line:max-classes-per-file
 export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerListItemState> {
     public constructor(props: PlayerListItemProps) {
         super(props);
         if (props.allowSelection && props.selectedPlayers) {
             this.state = {
-                selected: props.selectedPlayers.some((sp) => sp.name === props.player.name)
+                selected: props.selectedPlayers.some((sp) => sp.name === props.player.name),
+                confirmVisible: false
             };
         } else {
             this.state = {
-                selected: false
+                selected: false,
+                confirmVisible: false
             };
         }
     }
@@ -82,14 +87,25 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
                     </span>
                 </label>
                 {this.props.onDeleted &&
-                    <IconButton iconName="delete" className="icon-button--secondary" clickCommand={this.handleDelete} />
+                    <IconButton 
+                        iconName="delete" 
+                        className="icon-button--secondary" 
+                        clickCommand={this.confirmDelete} 
+                    />
+                }
+                {this.state.confirmVisible && 
+                <ConfirmationDialog message={"Are you sure you want to remove " + this.props.player.name} />
                 }
             </li>
         );        
     }
 
-    private handleDelete = () => {
-        this.props.onDeleted(this.props.player);
+    private confirmDelete = () => {
+        this.setState({
+            confirmVisible: true
+        });
+
+        // this.props.onDeleted(this.props.player);
     }
 
     private handleChange = () => {

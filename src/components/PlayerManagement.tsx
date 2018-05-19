@@ -29,4 +29,5 @@ export default class PlayerManagement extends React.Component<PlayerManagementPr
             </InnerPage>
         );
     }
+
 }

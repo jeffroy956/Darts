@@ -6,6 +6,7 @@ import DartGameStore from "../stores/DartGameStore";
 import InnerPage from "./InnerPage";
 import PageHeader from "./PageHeader";
 import PlayerList from "./PlayerList";
+import TextButton from "./TextButton";
 
 interface SelectPlayersProps {
     dartGameStore: DartGameStore;
@@ -49,7 +50,9 @@ export default class SelectPlayers extends React.Component<SelectPlayersProps, S
                         selectedPlayers={selectedPlayers}
                         onSelectionChanged={this.onSelectionChanged}
                     />
-                    <input type="button" value="Select Players" onClick={this.handleButtonClick} />
+                    <TextButton onClick={this.handleButtonClick}>
+                        Select Players
+                    </TextButton>
                 </div>
             </InnerPage>
         );

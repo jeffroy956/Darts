@@ -1,9 +1,12 @@
 @import "../variables.scss";
 @import "../mixins.scss";
-@import "../animations.scss";
+
+.text-button__wrapper {
+    display: inline-block;
+    position: relative;
+}
 
 .text-button {
-    display: inline-block;
     padding: $standardPadding * 2;
     border-radius: 2px;
     @include box-shadow(1);
@@ -24,5 +27,7 @@
 }
 
 .element--activated {
-    @include box-shadow(2);
+    button {
+        @include box-shadow(2);
+    }
 }

@@ -5,6 +5,7 @@ import Player from "../models/Player";
 import DartGameStore from "../stores/DartGameStore";
 import PlayerStore from "../stores/PlayerStore";
 import NewGame from "./NewGame";
+import TextButton from "./TextButton";
 
 describe("<NewGame/>", () => {
     it("displays list of selected players", () => {
@@ -42,7 +43,7 @@ describe("<NewGame/>", () => {
 
         const newGame = shallow(<NewGame dartGameStore={dartGameStore}/>);
 
-        const startButton = newGame.dive().find("button");
+        const startButton = newGame.dive().find(TextButton);
 
         expect(startButton.props().disabled).toBe(true);
     });
