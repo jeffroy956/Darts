@@ -1,6 +1,14 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
+.home {
+    .header {
+        h1 {
+            text-align: center;
+        }
+    }
+}
+
 .main-menu {
     width: 100%;
     display: flex;

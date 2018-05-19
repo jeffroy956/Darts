@@ -46,7 +46,6 @@ export default class SelectPlayers extends React.Component<SelectPlayersProps, S
                 <div className="select-players">
                     <PlayerList 
                         players={availablePlayers} 
-                        allowSelection={true} 
                         selectedPlayers={selectedPlayers}
                         onSelectionChanged={this.onSelectionChanged}
                     />

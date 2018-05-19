@@ -1,14 +1,13 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import Player from "../models/Player";
-import IconButton from "./IconButton";
 import ConfirmationDialog from "./ConfirmationDialog";
+import IconButton from "./IconButton";
 
 require("./PlayerList.scss");
 
 interface PlayerListProps {
     players: Player[];
-    allowSelection?: boolean;
     selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
     onDeleted?: (target: Player) => void;
@@ -17,7 +16,7 @@ interface PlayerListProps {
 @observer
 export default class PlayerList extends React.Component<PlayerListProps> {
     public render() {
-        const {players, allowSelection, selectedPlayers, onSelectionChanged, onDeleted} = this.props;
+        const {players, selectedPlayers, onSelectionChanged, onDeleted} = this.props;
         return(
             <div className="player-list">
                 <ul className="site-list">
@@ -28,7 +27,6 @@ export default class PlayerList extends React.Component<PlayerListProps> {
                                     key={player.name} 
                                     player={player}
                                     selectedPlayers={selectedPlayers}
-                                    allowSelection={allowSelection}
                                     onSelectionChanged={onSelectionChanged}
                                     onDeleted={onDeleted}
                                 />
@@ -43,7 +41,6 @@ export default class PlayerList extends React.Component<PlayerListProps> {
 
 interface PlayerListItemProps {
     player: Player;
-    allowSelection?: boolean;
     selectedPlayers?: Player[];
     onSelectionChanged?: (target: Player, selected: boolean) => void;
     onDeleted?: (target: Player) => void;
@@ -58,7 +55,7 @@ interface PlayerListItemState {
 export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerListItemState> {
     public constructor(props: PlayerListItemProps) {
         super(props);
-        if (props.allowSelection && props.selectedPlayers) {
+        if (props.onSelectionChanged && props.selectedPlayers) {
             this.state = {
                 selected: props.selectedPlayers.some((sp) => sp.name === props.player.name),
                 confirmVisible: false
@@ -75,7 +72,7 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
         return (
             <li>
                 <label>
-                    {this.props.allowSelection && 
+                    {this.props.onSelectionChanged && 
                         <input 
                             type="checkbox" 
                             checked={this.state.selected}
@@ -90,11 +87,13 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
                     <IconButton 
                         iconName="delete" 
                         className="icon-button--secondary" 
-                        clickCommand={this.confirmDelete} 
+                        onClick={this.confirmDelete} 
                     />
                 }
                 {this.state.confirmVisible && 
-                <ConfirmationDialog message={"Are you sure you want to remove " + this.props.player.name} />
+                <ConfirmationDialog onAccept={this.acceptDelete} onCancel={this.cancelDelete}>
+                    {`Are you sure you want to delete ${this.props.player.name}?`}
+                </ConfirmationDialog>
                 }
             </li>
         );        
@@ -105,7 +104,19 @@ export class PlayerListItem extends React.Component<PlayerListItemProps, PlayerL
             confirmVisible: true
         });
 
-        // this.props.onDeleted(this.props.player);
+    }
+
+    private cancelDelete = () => {
+        this.setState({
+            confirmVisible: false
+        });
+    }
+
+    private acceptDelete = () => {
+        this.setState({
+            confirmVisible: false
+        });
+        this.props.onDeleted(this.props.player);
     }
 
     private handleChange = () => {

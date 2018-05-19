@@ -36,7 +36,7 @@ export default class NewPlayer extends React.Component<NewPlayerProps, NewPlayer
                     <PageHeader 
                         title="New Player" 
                         backLinkTo="/players"
-                        acceptElement={<IconButton iconName="done" clickCommand={this.acceptNewPlayer} />}
+                        acceptElement={<IconButton iconName="done" onClick={this.acceptNewPlayer} />}
                     />
                 }
             >

@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import * as React from "react";
 import Player from "../models/Player";
+import ConfirmationDialog from "./ConfirmationDialog";
 import IconButton from "./IconButton";
 import PlayerList, {PlayerListItem} from "./PlayerList";
 
@@ -18,7 +19,11 @@ describe("<PlayersList/>", () => {
     it("renders a list of players and allows selection", () => {
         const players: Player[] = [new Player("Mike")];
 
-        const playerList = shallow(<PlayerList players={players} allowSelection={true} />);
+        const playerList = shallow(
+            <PlayerList 
+                players={players} 
+                onSelectionChanged={jest.fn()}
+            />);
 
         const playerItem = playerList.find(PlayerListItem).at(0).dive();
 
@@ -31,7 +36,7 @@ describe("<PlayersList/>", () => {
         const playerList = shallow(
             <PlayerList 
                 players={players}
-                allowSelection={true}
+                onSelectionChanged={jest.fn()}
                 selectedPlayers={[players[0]]}
             />
         );
@@ -51,7 +56,6 @@ describe("<PlayersList/>", () => {
         const playerList = shallow(
             <PlayerList 
                 players={players}
-                allowSelection={true}
                 selectedPlayers={[]}
                 onSelectionChanged={onSelectionChanged}
             />
@@ -80,7 +84,12 @@ describe("<PlayersList/>", () => {
         const firstPlayerItem = playerList.find(PlayerListItem).at(0).dive();
         const deleteButton = firstPlayerItem.find(IconButton).last();
         (deleteButton.dive().instance() as IconButton).buttonClicked({});
-        expect(onDeleted).toHaveBeenCalledWith(players[0]);
+        firstPlayerItem.update();
+
+        const confirmDialog = firstPlayerItem.find(ConfirmationDialog);
+        expect(confirmDialog.length).toBe(1);
+        expect(confirmDialog.dive().find(".dialog__message").text())
+            .toBe("Are you sure you want to delete Mike?");
     });
 
 });

@@ -1,9 +1,9 @@
 import * as React from "react";
+import TextButton from "./TextButton";
 
 require("./ConfirmationDialog.scss");
 
 interface ConfirmationDialogProps {
-    message: string;
     onAccept: () => void;
     onCancel: () => void;
 }
@@ -12,12 +12,12 @@ export default class ConfirmationDialog extends React.Component<ConfirmationDial
     public render() {
         return (
             <div className="dialog">
-                <div className="dialog__overlay" />
+                <div className="dialog__overlay" onClick={this.props.onCancel} />
                 <div className="dialog__content">
-                    <div>message</div>
+                    <div className="dialog__message">{this.props.children}</div>
                     <div className="dialog__commands">
-                        <button onClick={this.props.onAccept}>Yes</button>
-                        <button onClick={this.props.onCancel}>No</button>
+                        <TextButton onClick={this.props.onAccept}>Yes</TextButton>
+                        <TextButton onClick={this.props.onCancel}>No</TextButton>
                     </div>
                 </div>
             </div>
