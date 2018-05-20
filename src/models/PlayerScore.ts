@@ -35,7 +35,7 @@ export default class PlayerScore {
     }
 
     public tally(dartThrow: DartThrow) {
-        this.fieldScores[dartThrow.scoreIndex] += dartThrow.basePointValue * dartThrow.modifier;
+        this.fieldScores[dartThrow.scoreIndex] += dartThrow.totalPointValue;
         this.dartsThrown++;
         this.activeTurn.log(dartThrow);
     }
