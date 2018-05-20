@@ -11,7 +11,6 @@ export default class PlayerScore {
     public turnNumber: number = 0;
 
     @observable public activeTurn: Turn;
-    private throwCount: number = 0;
 
     public constructor(player: Player, fieldSize: number) {
         this.player = player;
@@ -29,19 +28,16 @@ export default class PlayerScore {
         return this.player.name;
     }
 
+    public nextTurn() {
+        this.activeTurn = new Turn();
+        this.turns.push(this.activeTurn);
+        this.turnNumber++;
+    }
+
     public tally(dartThrow: DartThrow) {
         this.fieldScores[dartThrow.scoreIndex] += dartThrow.basePointValue * dartThrow.modifier;
         this.dartsThrown++;
-        if (this.dartsThrown > 1 && this.throwCount === 0) {
-            this.activeTurn = new Turn();
-            this.turns.push(this.activeTurn);
-        }
         this.activeTurn.log(dartThrow);
-        this.throwCount++;
-        if (this.throwCount === 3) {
-            this.turnNumber++;
-            this.throwCount = 0;
-        }
     }
 
 }

@@ -7,7 +7,7 @@ import SingleFieldScoreboard from "./SingleFieldScoreboard";
 
 interface AroundTheClockLayoutProps {
     dartGameStore: DartGameStore;
-}
+}  
 
 @observer
 export default class AroundTheClockLayout extends React.Component<AroundTheClockLayoutProps> {

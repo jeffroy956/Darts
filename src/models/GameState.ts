@@ -39,6 +39,7 @@ export default class GameState {
         this.shooterIndex++;
         if (this.shooterIndex === this.playerScores.length) {
             this.shooterIndex = 0;
+            this.playerScores.forEach((ps) => ps.nextTurn());
         }
         this.shooterName = this.playerScores[this.shooterIndex].player.name;
     }

@@ -45,22 +45,4 @@ describe("PlayerScore", () => {
         expect(playerScore.turns[0].scoreTotal).toBe(40 + 19 + 18);
     });
 
-    it("tallying 7th throw has appropriate turn tracking", () => {
-        const playerScore = new PlayerScore(new Player("One"), 5);
-
-        playerScore.tally(new DartThrow(0, 20, ThrowModifier.Double));
-        playerScore.tally(new DartThrow(1, 19, ThrowModifier.Single));
-        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
-
-        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
-        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
-        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
-
-        playerScore.tally(new DartThrow(2, 18, ThrowModifier.Single));
-
-        expect(playerScore.turns.length).toBe(3);
-        expect(playerScore.dartsThrown).toBe(7);
-        expect(playerScore.total).toBe(40 + 19 + (18 * 5));
-    });
-
 });
