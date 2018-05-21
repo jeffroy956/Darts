@@ -3,6 +3,7 @@ import * as React from "react";
 import { Redirect } from "react-router";
 import DartGameStore from "../stores/DartGameStore";
 import AroundTheClockLayout from "./AroundTheClockLayout";
+import CricketLayout from "./CricketLayout";
 import ShanghaiLayout from "./ShanghaiLayout";
 
 interface DartGameProps {
@@ -26,10 +27,12 @@ export default class DartGame extends React.Component<DartGameProps> {
         const {dartGameStore} = this.props;
 
         switch (dartGameStore.selectedGame) {
-            case "shanghai":
-                return <ShanghaiLayout dartGameStore={dartGameStore} />;
+            case "cricket":
+                return <CricketLayout dartGameStore={dartGameStore} />;
             case "aroundtheclock":
                 return <AroundTheClockLayout dartGameStore={dartGameStore} />;
+            case "shanghai":
+                return <ShanghaiLayout dartGameStore={dartGameStore} />;
         }
 
         return null;

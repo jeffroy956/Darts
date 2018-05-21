@@ -44,3 +44,17 @@
         text-align: left;
     }
 }
+
+
+.field--done {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+    }
+}

@@ -1,5 +1,6 @@
 import { action, computed, IObservableArray, observable } from "mobx";
 import AroundTheClockScoring from "../models/AroundTheClockScoring";
+import CricketScoring from "../models/CricketScoring";
 import DartScoring from "../models/DartScoring";
 import GameState from "../models/GameState";
 import Player from "../models/Player";
@@ -57,10 +58,12 @@ export default class DartGameStore {
 
     private createGameScoring(game: string) {
         switch (game) {
-            case "shanghai":
-                return new ShanghaiScoring();
             case "aroundtheclock":
                 return new AroundTheClockScoring();
+            case "cricket":
+                return new CricketScoring();
+            case "shanghai":
+                return new ShanghaiScoring();
         }
 
         return null;

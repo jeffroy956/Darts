@@ -94,4 +94,17 @@ describe("DartGameStore", () => {
         expect(gameStore.gameState.shooter.fieldScores.length).toBe(1);
     });
 
+    it("initializes cricket scoring game", () => {
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
+        const gameStore = new DartGameStore(playerStore);
+
+        gameStore.selectPlayers(playerStore.players);
+        gameStore.selectGame("cricket");
+        gameStore.startGame();
+
+        expect(gameStore.dartScoring).toBeTruthy();
+        expect(gameStore.dartScoring.gameType).toBe("cricket");
+        expect(gameStore.gameState.shooter.fieldScores.length).toBe(7);
+    });
+
 });
