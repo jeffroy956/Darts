@@ -2,13 +2,17 @@ import DartThrow from "./DartThrow";
 import GameState from "./GameState";
 import { ThrowModifier } from "./ThrowModifier";
 
-export default abstract class DartScoring implements DartScoring {
+export default abstract class DartScoring {
     public scoreThrow(gameState: GameState, boardNumber: number, modifier: ThrowModifier): void {
         const dartThrow = this.getThrowValue(gameState, boardNumber, modifier);
         gameState.recordThrow(dartThrow);
         if (this.isComplete(gameState)) {
             this.setWinner(gameState);
         }
+    }
+
+    public undo(gameState: GameState): void {
+        //
     }
 
     protected abstract getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow;

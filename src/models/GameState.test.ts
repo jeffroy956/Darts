@@ -60,4 +60,23 @@ describe("GameState", () => {
         expect(gameState.shooter).toBeDefined();
         expect(gameState.shooterName).toBe("One");
     });
+
+    it("undo a throw in middle of player's turn", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, 1),
+            new PlayerScore(player2, 1)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+
+        gameState.undoThrow();
+
+        expect(gameState.shooter.total).toBe(1);
+    });
 });

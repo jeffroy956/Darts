@@ -8,9 +8,9 @@ export default class GameState {
     @observable public shooterName: string;
     @observable public gameCompleted: boolean = false;
     public winner: PlayerScore = null;
+    public turnThrowCount: number = 0;
 
     private shooterIndex: number = 0;
-    private throwCount: number = 0;
 
     public constructor(playerScores: PlayerScore[]) {
         this.playerScores = playerScores;
@@ -27,12 +27,16 @@ export default class GameState {
     }
     
     public recordThrow(dartThrow: DartThrow): void {
-        this.shooter.tally(dartThrow);
-        this.throwCount++;
-        if (this.throwCount === 3) {
-            this.throwCount = 0;
+        this.shooter.scoreThrow(dartThrow);
+        this.turnThrowCount++;
+        if (this.turnThrowCount === 3) {
+            this.turnThrowCount = 0;
             this.nextShooter();
         }
+    }
+
+    public undoThrow() {
+        this.shooter.undoThrow();
     }
 
     private nextShooter() {

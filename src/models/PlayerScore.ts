@@ -34,10 +34,23 @@ export default class PlayerScore {
         this.turnNumber++;
     }
 
-    public tally(dartThrow: DartThrow) {
+    public scoreThrow(dartThrow: DartThrow): void {
         this.fieldScores[dartThrow.scoreIndex] += dartThrow.totalPointValue;
         this.dartsThrown++;
         this.activeTurn.log(dartThrow);
+    }
+
+    public undoThrow(): void {
+        if (this.dartsThrown === 0) {
+            return;
+        }
+        if (this.activeTurn.throws.length === 0) {
+            this.turns.pop();
+            this.activeTurn = this.turns[this.turns.length - 1];
+        }
+        this.dartsThrown--;
+        const dartThrow = this.activeTurn.throws.pop();
+        this.fieldScores[dartThrow.scoreIndex] -= dartThrow.totalPointValue;
     }
 
 }

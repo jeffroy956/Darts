@@ -30,8 +30,8 @@ describe("<ShanghaiScoreboard/>", () => {
         ];
 
         const gameState = new GameState(playerScores);
-        gameState.shooter.tally(new DartThrow(0, 1, ThrowModifier.Triple));
-        gameState.shooter.tally(new DartThrow(1, 1, ThrowModifier.Single));
+        gameState.shooter.scoreThrow(new DartThrow(0, 1, ThrowModifier.Triple));
+        gameState.shooter.scoreThrow(new DartThrow(1, 1, ThrowModifier.Single));
 
         const scoreboard = shallow(<ShanghaiScoreboard gameState={gameState} />);
 
