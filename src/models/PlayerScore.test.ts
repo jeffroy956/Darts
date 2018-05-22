@@ -56,7 +56,7 @@ describe("PlayerScore", () => {
         expect(playerScore.total).toBe(1);
     });
 
-    it("undo a dart throw at start of turn", () => {
+    it("does not undo if at start of turn (scenario is handled by gamestate)", () => {
         const playerScore = new PlayerScore(new Player("One"), 1);
 
         playerScore.scoreThrow(new DartThrow(0, 1, ThrowModifier.Single));
@@ -67,8 +67,7 @@ describe("PlayerScore", () => {
 
         playerScore.undoThrow();
 
-        expect(playerScore.dartsThrown).toBe(2);
-        expect(playerScore.total).toBe(2);
+        expect(playerScore.dartsThrown).toBe(3);
     });
 
     it("does not undo if no darts thrown yet", () => {

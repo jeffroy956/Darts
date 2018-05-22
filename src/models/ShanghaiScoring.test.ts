@@ -95,24 +95,4 @@ describe("ShanghaiScoring", () => {
         expect(gameState.winner.name).toBe("Two");
     });
 
-    xit("undo in middle of player's turn", () => {
-        const player1 = new Player("One");
-        const player2 = new Player("Two");
-        const shanghaiScoring = new ShanghaiScoring();
-
-        const playerScores: PlayerScore[] = [
-            new PlayerScore(player1, shanghaiScoring.scoringFieldSize),
-            new PlayerScore(player2, shanghaiScoring.scoringFieldSize)
-        ];
-
-        const gameState = new GameState(playerScores);
-        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Single);
-        shanghaiScoring.scoreThrow(gameState, null, ThrowModifier.Single);
-
-        shanghaiScoring.undo(gameState);
-
-        expect(gameState.shooter.total).toBe(1);
-        expect(gameState.shooter.dartsThrown).toBe(1);
-});
-
 });

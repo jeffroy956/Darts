@@ -40,13 +40,15 @@ export default class PlayerScore {
         this.activeTurn.log(dartThrow);
     }
 
+    public cancelTurn() {
+        this.turns.pop();
+        this.activeTurn = this.turns[this.turns.length - 1];
+        this.turnNumber--;
+    }
+
     public undoThrow(): void {
-        if (this.dartsThrown === 0) {
+        if (this.dartsThrown === 0 || this.activeTurn.throws.length === 0) {
             return;
-        }
-        if (this.activeTurn.throws.length === 0) {
-            this.turns.pop();
-            this.activeTurn = this.turns[this.turns.length - 1];
         }
         this.dartsThrown--;
         const dartThrow = this.activeTurn.throws.pop();

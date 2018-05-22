@@ -79,4 +79,79 @@ describe("GameState", () => {
 
         expect(gameState.shooter.total).toBe(1);
     });
+
+    it("undo at start of next player's turn", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, 1),
+            new PlayerScore(player2, 1)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+
+        gameState.undoThrow();
+
+        expect(gameState.shooter.name).toBe("One");
+        expect(gameState.shooter.total).toBe(2);
+    });
+
+    it("undo at start of a new round", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, 1),
+            new PlayerScore(player2, 1)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+
+        gameState.undoThrow();
+
+        expect(gameState.shooter.name).toBe("Two");
+        expect(gameState.shooter.total).toBe(2);
+        expect(gameState.playerScores[0].activeTurn.throws.length).toBe(3);
+    });
+
+    it("undo resets completed game state", () => {
+        const player1 = new Player("One");
+        const player2 = new Player("Two");
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, 1),
+            new PlayerScore(player2, 1)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Single));
+        gameState.recordThrow(new DartThrow(0, 1, ThrowModifier.Double));
+
+        gameState.setWinner(playerScores[1]);
+
+        gameState.undoThrow();
+
+        expect(gameState.gameCompleted).toBe(false);
+        expect(gameState.winner).toBeFalsy();
+    });
+
 });
