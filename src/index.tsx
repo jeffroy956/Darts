@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { PlayerLocalStorage } from "./api/PlayerStorage";
 import DartGame from "./components/DartGame";
+import DartRoom from "./components/DartRoom";
 import MainMenu from "./components/MainMenu";
 import NewGame from "./components/NewGame";
 import NewPlayer from "./components/NewPlayer";
@@ -37,6 +38,7 @@ ReactDOM.render(
                 <Route path="/new-game/select-players" component={SelectPlayers} />
                 <Route path="/new-game" component={NewGame} />
                 <Route path="/dart-game" component={DartGame} />
+                <Route path="/dart-room" component={DartRoom} />
                 <Route path="/" component={MainMenu} />
             </Switch>
         </HashRouter>

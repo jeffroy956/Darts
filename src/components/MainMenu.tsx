@@ -17,7 +17,7 @@ export default class MainMenu extends React.Component<{}> {
                     <Link to="/players">Players</Link>
                 </div>
                 <div className="menu-item">
-                    <Link to="/statistics">Statistics</Link>
+                    <Link to="/dart-room">Dart Room</Link>
                 </div>
             </div>
 

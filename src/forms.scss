@@ -3,10 +3,16 @@
 
 .form-field {
     display: flex;
+    margin: $standardPadding 0;
+    label {
+        margin-right: $standardPadding * 2;
+    }
     i {
         margin-right: $standardPadding * 2;
     }
+
     input {
+        margin-left: $standardPadding;
         flex: 1;
         border: none;
         color: $darkFontColor;

@@ -63,7 +63,7 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
                         </select>
                     </div>
                     <div>
-                        <TextButton disabled={!allowNewGame} onClick={this.startGame}>
+                        <TextButton disabled={!allowNewGame} onClick={this.startGame} className="button--new-game">
                             Start Game
                         </TextButton>
                     </div>

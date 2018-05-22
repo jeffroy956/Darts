@@ -5,3 +5,8 @@
     border: 1px solid $primaryBorderColor;
     cursor: pointer;
 }
+
+.button--new-game {
+    margin-top: $standardPadding * 2;
+    min-width: 200px;
+}
