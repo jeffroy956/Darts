@@ -54,7 +54,7 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
                             </span>
                         </div>
                     </Link>
-                    <div className="form-field">
+                    <div className="form-field form-field--game-select">
                         <label>Game</label>
                         <select value={selectedGame} onChange={this.handleGameChange}>
                             {availableGames.map((ag) => 
@@ -63,7 +63,7 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
                         </select>
                     </div>
                     <div>
-                        <TextButton disabled={!allowNewGame} onClick={this.startGame} className="button--new-game">
+                        <TextButton disabled={!allowNewGame} onClick={this.startGame} className="button--full-width">
                             Start Game
                         </TextButton>
                     </div>

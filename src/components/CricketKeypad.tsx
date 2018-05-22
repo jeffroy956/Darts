@@ -34,6 +34,7 @@ export default class HitMissKeypad extends React.Component<CricketKeypadProps, C
                     />)
                 }
                 <button onClick={this.miss}>0</button>
+                <button className="button--spacer"/>
                 <button className="button--modifier" onClick={this.doubleModifier}>Double</button>
                 <button className="button--modifier" onClick={this.tripleModifier}>Triple</button>
                 <button className="button--modifier" onClick={this.undo}>Undo</button>

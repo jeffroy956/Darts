@@ -6,7 +6,19 @@
     cursor: pointer;
 }
 
-.button--new-game {
-    margin-top: $standardPadding * 2;
-    min-width: 200px;
+.form-field.form-field--game-select {
+    display: flex;
+    margin: $standardPadding * 2 0;
+
+    label {
+        font-size: 16px;
+        padding: $standardPadding;
+    }
+
+    select {
+        font-size: 16px;
+        padding: $standardPadding;
+        flex-grow: 1;
+    }
+    
 }

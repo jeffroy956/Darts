@@ -1,11 +1,13 @@
 @import "./Keypad.scss";
 
 .key-pad--cricket {
-    margin-left: 4%;
     button {
-        width: 12%;
+        width: 20%;
         &.button--modifier {
-            width: 24%;
+            width: 33.3%;
+        }
+        &.button--spacer {
+            visibility: hidden;
         }
     }
     

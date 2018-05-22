@@ -31,3 +31,11 @@
         @include box-shadow(2);
     }
 }
+
+.button--full-width {
+    display: block;
+    margin: $standardPadding * 2 0;
+    button {
+        width: 100%;
+    }
+}

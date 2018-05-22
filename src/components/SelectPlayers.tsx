@@ -49,7 +49,7 @@ export default class SelectPlayers extends React.Component<SelectPlayersProps, S
                         selectedPlayers={selectedPlayers}
                         onSelectionChanged={this.onSelectionChanged}
                     />
-                    <TextButton onClick={this.handleButtonClick}>
+                    <TextButton onClick={this.handleButtonClick} className="button--full-width">
                         Select Players
                     </TextButton>
                 </div>

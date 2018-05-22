@@ -18,9 +18,9 @@ export default class TextButton extends React.Component<TextButtonProps> {
 
     public render() {
         return(
-            <div className="text-button__wrapper">
+            <div className={"text-button__wrapper " + (this.props.className ? this.props.className : "")}>
                 <button 
-                    className={this.getButtonClass()} 
+                    className="text-button" 
                     onClick={this.buttonClicked}
                     disabled={this.props.disabled}
                 >
@@ -36,11 +36,4 @@ export default class TextButton extends React.Component<TextButtonProps> {
         }
     }
 
-    private getButtonClass() {
-        let baseClass = "text-button";
-        if (this.props.className) {
-            baseClass += " " + this.props.className;
-        }
-        return  baseClass;
-    }
 }
