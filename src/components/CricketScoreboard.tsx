@@ -19,10 +19,10 @@ export default class CricketScoreboard extends React.Component<CricketScoreboard
                 <table>
                     <thead>
                         <tr>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th/>
+                            <th/>
                             {this.scoreFields.map((sf) => <th key={sf}>{sf}</th>)}
-                            <th>&nbsp;</th>
+                            <th/>
                         </tr>
                     </thead>
                     <tbody>

@@ -15,7 +15,8 @@ button {
 }
 
 body {
-    height: 100vh;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    height: calc(100vh - 75px);
     margin: 0;
     padding: 0;
 }
@@ -25,6 +26,7 @@ body {
 }
 
 h1 {
+    font-weight: normal;
     color: $headlineFontColor;
     padding: $standardPadding * 2;
     a {

@@ -18,11 +18,11 @@ export default class SingleFieldScoreboard extends React.Component<SingleFieldSc
                 <table>
                     <thead>
                         <tr>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th/>
+                            <th/>
                             <th>Target</th>
                             <th colSpan={3}>Turn Score</th>
-                            <th>&nbsp;</th>
+                            <th/>
                         </tr>
                     </thead>
                     <tbody>

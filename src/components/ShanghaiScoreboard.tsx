@@ -19,13 +19,13 @@ export default class ShanghaiScoreboard extends React.Component<ShanghaiScoreboa
                 <table>
                     <thead>
                         <tr>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th/>
+                            <th/>
                             {playerScores[0].fieldScores.map((value, index) => 
                                 <th key={index}>{index + 1}</th>
                             )}
                             <th>Total</th>
-                            <th>&nbsp;</th>
+                            <th/>
                         </tr>
                     </thead>
                     <tbody>
