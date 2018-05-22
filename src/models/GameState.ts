@@ -43,8 +43,10 @@ export default class GameState {
         }
         if (this.shooter.activeTurn.throws.length === 0) {
             this.previousShooter();
+            this.turnThrowCount = 2;
+        } else {
+            this.turnThrowCount--;
         }
-
         this.totalThrowCount--;
         this.resetWinner();
         this.shooter.undoThrow();

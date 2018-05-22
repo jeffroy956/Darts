@@ -38,7 +38,7 @@ describe("GameState", () => {
         expect(gameState.shooter.player.name).toBe("Two");
     });
 
-    it("Returns to first shooter after 6 throws", () => {
+    it("returns to first shooter after 6 throws", () => {
         const player1 = new Player("One");
         const player2 = new Player("Two");
 
@@ -77,6 +77,7 @@ describe("GameState", () => {
 
         gameState.undoThrow();
 
+        expect(gameState.turnThrowCount).toBe(1);
         expect(gameState.shooter.total).toBe(1);
     });
 
@@ -99,6 +100,7 @@ describe("GameState", () => {
 
         expect(gameState.shooter.name).toBe("One");
         expect(gameState.shooter.total).toBe(2);
+        expect(gameState.turnThrowCount).toBe(2);
     });
 
     it("undo at start of a new round", () => {
@@ -125,6 +127,7 @@ describe("GameState", () => {
         expect(gameState.shooter.name).toBe("Two");
         expect(gameState.shooter.total).toBe(2);
         expect(gameState.playerScores[0].activeTurn.throws.length).toBe(3);
+        expect(gameState.turnThrowCount).toBe(2);
     });
 
     it("undo resets completed game state", () => {

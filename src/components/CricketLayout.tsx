@@ -17,7 +17,7 @@ interface CricketLayoutProps {
 @observer
 export default class CricketLayout extends React.Component<CricketLayoutProps> {
     public render() {
-        const {gameState, scoreThrow} = this.props.dartGameStore;
+        const {gameState, scoreThrow, undoThrow} = this.props.dartGameStore;
         return(
             <div className="game-layout">
                 <PageHeader title="Cricket (no points)" backLinkTo="/new-game" />
@@ -25,7 +25,7 @@ export default class CricketLayout extends React.Component<CricketLayoutProps> {
                 {gameState.gameCompleted ?
                     <div className="message">{gameState.winner.name} has won the match!</div>
                     : 
-                    <CricketKeypad undo={null} scoreThrow={scoreThrow} />
+                    <CricketKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }
                 
             </div>

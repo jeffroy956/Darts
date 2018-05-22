@@ -17,7 +17,7 @@ interface ShanghaiLayoutProps {
 @observer
 export default class ShanghaiLayout extends React.Component<ShanghaiLayoutProps> {
     public render() {
-        const {gameState, scoreThrow} = this.props.dartGameStore;
+        const {gameState, scoreThrow, undoThrow} = this.props.dartGameStore;
         return(
             <div className="game-layout">
                 <PageHeader title="Shanghai" backLinkTo="/new-game" />
@@ -25,7 +25,7 @@ export default class ShanghaiLayout extends React.Component<ShanghaiLayoutProps>
                 {gameState.gameCompleted ?
                     <div className="message">{gameState.winner.name} has won the match!</div>
                     : 
-                    <HitMissKeypad undo={null} scoreThrow={scoreThrow} />
+                    <HitMissKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }
                 
             </div>

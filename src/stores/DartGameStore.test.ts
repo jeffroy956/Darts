@@ -107,4 +107,19 @@ describe("DartGameStore", () => {
         expect(gameStore.gameState.shooter.fieldScores.length).toBe(7);
     });
 
+    it("undoes player throw", () => {
+        const playerStore = new PlayerStore(new PlayerFakeStorage());
+        const gameStore = new DartGameStore(playerStore);
+
+        gameStore.selectPlayers(playerStore.players);
+        gameStore.selectGame("aroundtheclock");
+        gameStore.startGame();
+
+        gameStore.scoreThrow(null, ThrowModifier.Double);
+        gameStore.scoreThrow(null, ThrowModifier.Single);
+
+        gameStore.undoThrow();
+
+        expect(gameStore.gameState.shooter.total).toBe(2);
+    });
 });

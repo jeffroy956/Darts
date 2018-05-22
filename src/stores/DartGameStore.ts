@@ -11,7 +11,7 @@ import PlayerStore from "./PlayerStore";
 
 export default class DartGameStore {
     public selectedPlayers: IObservableArray<Player> = observable.array([]);
-    public availableGames: string[] = ["shanghai", "aroundtheclock", "cricket"];
+    public availableGames: string[] = ["aroundtheclock", "cricket", "shanghai"];
     public gameState: GameState;
     public dartScoring: DartScoring;
 
@@ -54,6 +54,11 @@ export default class DartGameStore {
     @action
     public scoreThrow = (boardNumber: number, modifier: ThrowModifier): void => {
         this.dartScoring.scoreThrow(this.gameState, boardNumber, modifier);
+    }
+
+    @action
+    public undoThrow = (): void => {
+        this.gameState.undoThrow();
     }
 
     private createGameScoring(game: string) {

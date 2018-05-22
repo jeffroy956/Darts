@@ -12,7 +12,7 @@ interface AroundTheClockLayoutProps {
 @observer
 export default class AroundTheClockLayout extends React.Component<AroundTheClockLayoutProps> {
     public render() {
-        const {gameState, scoreThrow} = this.props.dartGameStore;
+        const {gameState, scoreThrow, undoThrow} = this.props.dartGameStore;
         return(
             <div className="game-layout">
                 <PageHeader title="Around The Clock" backLinkTo="/new-game" />
@@ -20,7 +20,7 @@ export default class AroundTheClockLayout extends React.Component<AroundTheClock
                 {gameState.gameCompleted ?
                     <div className="message">{gameState.winner.name} has won the match!</div>
                     : 
-                    <HitMissKeypad undo={null} scoreThrow={scoreThrow} />
+                    <HitMissKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }
                 
             </div>

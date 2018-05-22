@@ -11,10 +11,6 @@ export default abstract class DartScoring {
         }
     }
 
-    public undo(gameState: GameState): void {
-        //
-    }
-
     protected abstract getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow;
     protected abstract isComplete(gameState: GameState);
     protected abstract setWinner(gameState: GameState);
