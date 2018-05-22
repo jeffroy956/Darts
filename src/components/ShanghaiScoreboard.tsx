@@ -55,7 +55,6 @@ interface ShanghaiPlayerScoreboardProps {
 }
 
 // tslint:disable-next-line:max-classes-per-file
-@observer
 export class ShanghaiPlayerScoreboard extends React.Component<ShanghaiPlayerScoreboardProps> {
     public render() {
         const {playerName, fieldScores, scoreTotal, dartsThrown} = this.props;

@@ -9,7 +9,6 @@ interface CricketScoreboardProps {
     gameState: GameState;
 }
 
-@observer
 export default class CricketScoreboard extends React.Component<CricketScoreboardProps> {
     private scoreFields: number[] = [15, 16, 17, 18, 19, 20, 25];
 

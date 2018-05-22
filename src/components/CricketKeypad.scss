@@ -1,10 +1,11 @@
 @import "./Keypad.scss";
 
 .key-pad--cricket {
+    margin-left: 4%;
     button {
-        flex-basis: 30px;
+        width: 12%;
         &.button--modifier {
-            flex-basis: 60px;
+            width: 24%;
         }
     }
     
