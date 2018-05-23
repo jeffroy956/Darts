@@ -51,7 +51,7 @@ export default class PlayerScore {
             return;
         }
         this.dartsThrown--;
-        const dartThrow = this.activeTurn.throws.pop();
+        const dartThrow = this.activeTurn.undoThrow();
         this.fieldScores[dartThrow.scoreIndex] -= dartThrow.totalPointValue;
     }
 

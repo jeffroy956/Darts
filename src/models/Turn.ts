@@ -12,6 +12,20 @@ export default class Turn {
         .map((dartThrow) => dartThrow.totalPointValue)
         .reduce((total, value) => total + value);
     }
+
+    public undoThrow(): DartThrow {
+        const undoneThrow = this.throws.pop();
+        if (this.throws.length < 3) {
+            this.thirdThrow = null;
+        }
+        if (this.throws.length < 2) {
+            this.secondThrow = null;
+        }
+        if (this.throws.length < 1) {
+            this.firstThrow = null;
+        }
+        return undoneThrow;
+    }
     
     public log(dartThrow: DartThrow) {
         this.throws.push(dartThrow);
