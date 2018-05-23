@@ -14,6 +14,16 @@
             border: none;
         }
     }
+    th {
+        font-weight: normal;
+    }
+    th.target--active {
+        font-weight: bold;
+        background-color: #FFFDE7;
+    }
+    td.target--active {
+        background-color: #FFFDE7;
+    }
     .player-name {
         text-align: left;
     }
