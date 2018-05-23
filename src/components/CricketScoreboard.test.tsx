@@ -45,7 +45,7 @@ describe("<CricketScoreboard/>", () => {
             />);
         
         const scoreRow = playerScoreboard.find("td");
-        expect(scoreRow.at(1).text()).toBe("One");
+        expect(scoreRow.at(1).text()).toBe("One (1)");
         expect(scoreRow.at(2).text()).toBe("/");
         expect(scoreRow.at(3).text()).toBe("X");
         expect(scoreRow.at(4).text()).toBe("");

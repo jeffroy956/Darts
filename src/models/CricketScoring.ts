@@ -6,6 +6,9 @@ import { ThrowModifier } from "./ThrowModifier";
 export default class CricketScoring extends DartScoring {
 
     protected getThrowValue(gameState: GameState, boardNumber: number, modifier: ThrowModifier): DartThrow {
+        if (boardNumber === 25 && modifier === ThrowModifier.Triple) {
+            return new DartThrow(this.getScoreIndex(boardNumber), 1, ThrowModifier.Double);
+        }
         return new DartThrow(this.getScoreIndex(boardNumber), 1, modifier);
     }
     

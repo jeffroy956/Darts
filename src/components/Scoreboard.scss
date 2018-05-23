@@ -14,8 +14,19 @@
             border: none;
         }
     }
-    .field-score {
-        width: 50px;
+    .player-name {
+        text-align: left;
+    }
+    .field-score--narrow {
+        width: 30px;
+        text-align: right;
+    }
+    .field-score--cricket {
+        width: 35px;
+        text-align: center;
+    }
+    .field-score--total {
+        width: 40px;
     }
     th {
         text-align: center;
@@ -38,6 +49,9 @@
             i {
                 display: block;
             }
+        }
+        .player-name {
+            font-weight: bold;
         }
     }
     .player-name {

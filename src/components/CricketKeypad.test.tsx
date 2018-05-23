@@ -44,4 +44,15 @@ describe("<CricketKeypad/>", () => {
 
         expect(keySpy).toHaveBeenCalledWith(16, ThrowModifier.Single);
     });
+
+    it("resets throw modifier after it is used", () => {
+        const keySpy = jest.fn();
+        const keypad = shallow(<CricketKeypad scoreThrow={keySpy} undo={null} />);
+
+        keypad.find(".button--modifier").at(1).simulate("click");
+        keypad.find(PointKey).at(1).dive().simulate("click");
+        keypad.update();
+        keypad.find(PointKey).at(1).dive().simulate("click");
+        expect(keySpy).toHaveBeenCalledWith(16, ThrowModifier.Single);
+    });
 });

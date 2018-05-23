@@ -9,6 +9,7 @@ interface CricketScoreboardProps {
     gameState: GameState;
 }
 
+@observer
 export default class CricketScoreboard extends React.Component<CricketScoreboardProps> {
     private scoreFields: number[] = [15, 16, 17, 18, 19, 20, 25];
 
@@ -57,11 +58,11 @@ export class CricketPlayerScoreboard extends React.Component<CricketPlayerScoreb
         return (
             <tr className={isActive ? "player--active" : ""}>
                 <td className="player-indicator"><i className="material-icons">chevron_right</i></td>
-                <td>{playerName}</td>
+                <td className="player-name">{playerName}<span> ({dartsThrown})</span></td>
                 {fieldScores.map((fs, index) => 
                     <td 
                         key={index} 
-                        className="field-score"
+                        className="field-score--cricket"
                     >
                         {this.translateScore(fs)}
                     </td>)}

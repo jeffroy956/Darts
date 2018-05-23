@@ -29,17 +29,35 @@ export default class HitMissKeypad extends React.Component<CricketKeypadProps, C
                     <PointKey
                         key={sk} 
                         value={sk} 
-                        scoreThrow={this.props.scoreThrow} 
+                        scoreThrow={this.handleScoreThrow} 
                         modifier={this.state.modifier}
                     />)
                 }
                 <button onClick={this.miss}>0</button>
                 <button className="button--spacer"/>
-                <button className="button--modifier" onClick={this.doubleModifier}>Double</button>
-                <button className="button--modifier" onClick={this.tripleModifier}>Triple</button>
+                <button 
+                    className={this.getThrowModifierCss(ThrowModifier.Double)} 
+                    onClick={this.doubleModifier}
+                >
+                Double
+                </button>
+                <button 
+                    className={this.getThrowModifierCss(ThrowModifier.Triple)} 
+                    onClick={this.tripleModifier}
+                >
+                Triple
+                </button>
                 <button className="button--modifier" onClick={this.undo}>Undo</button>
             </div>
         );
+    }
+
+    private getThrowModifierCss(modifierId: ThrowModifier): string {
+        let baseClass = "button--modifier";
+        if (this.state.modifier === modifierId) {
+            baseClass += " modifier--active";
+        }
+        return baseClass;
     }
 
     private miss = () => {
@@ -71,6 +89,11 @@ export default class HitMissKeypad extends React.Component<CricketKeypadProps, C
 
     private undo = () => {
         this.props.undo();
+    }
+    
+    private handleScoreThrow = (boardNumber: number, modifier: ThrowModifier) => {
+        this.props.scoreThrow(boardNumber, modifier);
+        this.applyModifier(ThrowModifier.Single);
     }
     
 }

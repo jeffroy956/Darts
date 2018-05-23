@@ -64,9 +64,9 @@ export class ShanghaiPlayerScoreboard extends React.Component<ShanghaiPlayerScor
                 <td className="player-indicator"><i className="material-icons">chevron_right</i></td>
                 <td className="player-name"><span>{playerName}</span><span>({dartsThrown})</span></td>
                 {fieldScores.map((fs, index) => 
-                    <td key={index} className="field-score">{fs}</td>
+                    <td key={index} className="field-score--narrow">{fs}</td>
                 )}
-                <td className="field-score">{scoreTotal}</td>
+                <td className="field-score--total">{scoreTotal}</td>
                 <td className="player-indicator"><i className="material-icons">chevron_left</i></td>
             </tr>
         );

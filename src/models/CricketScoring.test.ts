@@ -65,4 +65,18 @@ describe("CricketScoring", () => {
         expect(gameState.gameCompleted).toBe(true);
     });
 
+    it("ignores triple modifier for bulls eye and scores it as a double", () => {
+        const player1 = new Player("One");
+        const cricketScoring = new CricketScoring();
+
+        const playerScores: PlayerScore[] = [
+            new PlayerScore(player1, cricketScoring.scoringFieldSize)
+        ];
+
+        const gameState = new GameState(playerScores);
+
+        cricketScoring.scoreThrow(gameState, 25, ThrowModifier.Triple);
+        expect(gameState.shooter.total).toBe(2);
+    });
+
 });

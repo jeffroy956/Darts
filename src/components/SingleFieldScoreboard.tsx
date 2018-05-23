@@ -61,7 +61,7 @@ export class SingleFieldPlayerScoreboard extends React.Component<SingleFieldPlay
         return (
             <tr className={isActive ? "player--active" : ""}>
                 <td className="player-indicator"><i className="material-icons">chevron_right</i></td>
-                <td>{playerName}</td>
+                <td className="player-name">{playerName}</td>
                 <td>{scoreTotal + 1}</td>
                 <td>{activeTurn && activeTurn.firstThrow}</td>
                 <td>{activeTurn && activeTurn.secondThrow}</td>
