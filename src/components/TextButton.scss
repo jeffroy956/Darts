@@ -23,6 +23,8 @@
     }
     &:disabled {
         cursor: default;
+        color: $borderGrey;
+        opacity: 0.7;
     }
 }
 

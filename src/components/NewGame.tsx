@@ -43,22 +43,20 @@ export default class NewGame extends React.Component<NewGameProps, NewGameState>
                 }
             >
                 <div>
-                    <Link to="/new-game/select-players">
-                        <div className="new-game__players">
-                            <i className="material-icons">people</i>
-                            <span>
-                            {(selectedPlayers && selectedPlayers.length > 0) 
-                                ? selectedPlayers.map((player) => player.name).join(", ")
-                                : "No players selected."
-                            }
-                            </span>
-                        </div>
+                    <Link to="/new-game/select-players" className="new-game__players">
+                        <i className="material-icons">people</i>
+                        <span>
+                        {(selectedPlayers && selectedPlayers.length > 0) 
+                            ? selectedPlayers.map((player) => player.name).join(", ")
+                            : "No players selected."
+                        }
+                        </span>
                     </Link>
                     <div className="form-field form-field--game-select">
                         <label>Game</label>
                         <select value={selectedGame} onChange={this.handleGameChange}>
                             {availableGames.map((ag) => 
-                                <option key={ag} value={ag}>{ag}</option>
+                                <option key={ag.value} value={ag.value}>{ag.display}</option>
                             )}
                         </select>
                     </div>

@@ -1,14 +1,22 @@
 @import "../variables.scss";
 
 .new-game__players {
+    display: flex;
+    text-decoration: none;
     padding: $standardPadding * 2;
     border: 1px solid $primaryBorderColor;
     cursor: pointer;
+    span {
+        flex-grow: 1;
+        text-decoration: underline;
+        padding-left: 15px;
+        padding-top: 2px;
+    }
 }
 
 .form-field.form-field--game-select {
     display: flex;
-    margin: $standardPadding * 2 0;
+    margin: 20px 0;
 
     label {
         font-size: 16px;
