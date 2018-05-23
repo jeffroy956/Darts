@@ -2,7 +2,7 @@
 React demo app for Western MA Developers User Group
 
 # Demo app web site
-https://wmugdarts.azurewebsites.net/
+[Demo app web site](https://wmugdarts.azurewebsites.net/)
 
 # src Folder Structure
 
