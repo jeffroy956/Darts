@@ -12,7 +12,7 @@ interface ClicketKeypadState {
     modifier: ThrowModifier;
 }
 
-export default class HitMissKeypad extends React.Component<CricketKeypadProps, ClicketKeypadState> {
+export default class CricketKeypad extends React.Component<CricketKeypadProps, ClicketKeypadState> {
     private scoreKeys: number[] = [15, 16, 17, 18, 19, 20, 25];
 
     public constructor(props) {
@@ -20,6 +20,8 @@ export default class HitMissKeypad extends React.Component<CricketKeypadProps, C
         this.state = {
             modifier: ThrowModifier.Single
         };
+        // // bind this without arrow syntax:
+        // this.undo = this.undo.bind(this);
     }
 
     public render() {
@@ -90,6 +92,10 @@ export default class HitMissKeypad extends React.Component<CricketKeypadProps, C
     private undo = () => {
         this.props.undo();
     }
+
+    // private undo() {
+    //     this.props.undo();
+    // }
     
     private handleScoreThrow = (boardNumber: number, modifier: ThrowModifier) => {
         this.props.scoreThrow(boardNumber, modifier);
