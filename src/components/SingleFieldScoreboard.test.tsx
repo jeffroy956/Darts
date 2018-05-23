@@ -54,6 +54,22 @@ describe("<SingleFieldScoreboard/>", () => {
         expect(scoreRow.at(2).text()).toBe("2");
     });
 
+    it("target score cannot exceed max value", () => {
+        const playerScoreboard = shallow(
+            <SingleFieldPlayerScoreboard 
+                playerName="One"
+                shooterName="One"
+                fieldScores={[]}
+                activeTurn={new Turn()}
+                scoreTotal={20}
+                dartsThrown={1}
+                maxTargetValue={20}
+            />);
+        
+        const scoreRow = playerScoreboard.find("td");
+        expect(scoreRow.at(2).text()).toBe("20");
+    });
+
     it("renders player name and target score", () => {
         const playerScoreboard = shallow(
             <SingleFieldPlayerScoreboard 

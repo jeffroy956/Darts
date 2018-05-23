@@ -7,6 +7,7 @@ import PlayerScore from "../models/PlayerScore";
 import { ThrowModifier } from "../models/ThrowModifier";
 import DartGameStore from "../stores/DartGameStore";
 import PlayerStore from "../stores/PlayerStore";
+import GameCompleted from "./GameCompleted";
 import HitMissKeypad from "./HitMissKeypad";
 import ShanghaiLayout from "./ShanghaiLayout";
 import ShanghaiScoreboard from "./ShanghaiScoreboard";
@@ -70,7 +71,7 @@ describe("<ShanghaiLayout/>", () => {
         const keypad = layout.find(HitMissKeypad);
         expect(keypad.length).toBe(0);
 
-        expect(layout.find(".message").text()).toBe("Two has won the match!");
+        expect(layout.find(GameCompleted).props().winnerName).toBe("Two");
         
     });
 

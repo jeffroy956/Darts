@@ -6,6 +6,7 @@ import GameState from "../models/GameState";
 import DartGameStore from "../stores/DartGameStore";
 import CricketKeypad from "./CricketKeypad";
 import CricketScoreboard from "./CricketScoreboard";
+import GameCompleted from "./GameCompleted";
 import PageHeader from "./PageHeader";
 
 require("./GameLayout.scss");
@@ -23,7 +24,7 @@ export default class CricketLayout extends React.Component<CricketLayoutProps> {
                 <PageHeader title="Cricket (no points)" backLinkTo="/new-game" />
                 <CricketScoreboard gameState={gameState} />
                 {gameState.gameCompleted ?
-                    <div className="message">{gameState.winner.name} has won the match!</div>
+                    <GameCompleted winnerName={gameState.winner.name} undo={undoThrow} />
                     : 
                     <CricketKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }

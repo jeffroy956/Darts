@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import DartGameStore from "../stores/DartGameStore";
+import GameCompleted from "./GameCompleted";
 import HitMissKeypad from "./HitMissKeypad";
 import PageHeader from "./PageHeader";
 import SingleFieldScoreboard from "./SingleFieldScoreboard";
@@ -16,9 +17,9 @@ export default class AroundTheClockLayout extends React.Component<AroundTheClock
         return(
             <div className="game-layout">
                 <PageHeader title="Around The Clock" backLinkTo="/new-game" />
-                <SingleFieldScoreboard gameState={gameState} />
+                <SingleFieldScoreboard gameState={gameState} maxTargetValue={20} />
                 {gameState.gameCompleted ?
-                    <div className="message">{gameState.winner.name} has won the match!</div>
+                    <GameCompleted winnerName={gameState.winner.name} undo={undoThrow} />
                     : 
                     <HitMissKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }

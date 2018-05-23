@@ -4,6 +4,7 @@ import * as React from "react";
 import DartScoring from "../models/DartScoring";
 import GameState from "../models/GameState";
 import DartGameStore from "../stores/DartGameStore";
+import GameCompleted from "./GameCompleted";
 import HitMissKeypad from "./HitMissKeypad";
 import PageHeader from "./PageHeader";
 import ShanghaiScoreboard from "./ShanghaiScoreboard";
@@ -23,7 +24,7 @@ export default class ShanghaiLayout extends React.Component<ShanghaiLayoutProps>
                 <PageHeader title="Shanghai" backLinkTo="/new-game" />
                 <ShanghaiScoreboard gameState={gameState} />
                 {gameState.gameCompleted ?
-                    <div className="message">{gameState.winner.name} has won the match!</div>
+                    <GameCompleted winnerName={gameState.winner.name} undo={undoThrow} />
                     : 
                     <HitMissKeypad undo={undoThrow} scoreThrow={scoreThrow} />
                 }
