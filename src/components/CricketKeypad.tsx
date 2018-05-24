@@ -49,7 +49,7 @@ export default class CricketKeypad extends React.Component<CricketKeypadProps, C
                 >
                 Triple
                 </button>
-                <button className="button--modifier" onClick={this.undo}>Undo</button>
+                <button className="button--modifier" onClick={this.props.undo}>Undo</button>
             </div>
         );
     }
@@ -88,14 +88,6 @@ export default class CricketKeypad extends React.Component<CricketKeypadProps, C
             };
         });
     }
-
-    private undo = () => {
-        this.props.undo();
-    }
-
-    // private undo() {
-    //     this.props.undo();
-    // }
     
     private handleScoreThrow = (boardNumber: number, modifier: ThrowModifier) => {
         this.props.scoreThrow(boardNumber, modifier);
