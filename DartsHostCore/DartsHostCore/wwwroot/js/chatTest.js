@@ -7,7 +7,7 @@
 // See Es5-chat.js for a Babel transpiled version of the following code:
 
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/dart-room")
     .build();
 
 connection.on("ReceiveMessage", (user, message) => {
@@ -24,5 +24,12 @@ document.getElementById("sendButton").addEventListener("click", event => {
     const user = document.getElementById("userInput").value;
     const message = document.getElementById("messageInput").value;
     connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+    event.preventDefault();
+});
+
+document.getElementById("startRoom").addEventListener("click", event => {
+    const user = document.getElementById("userInput").value;
+    const roomName = document.getElementById("roomName").value;
+    connection.invoke("StartRoom", user, roomName).catch(err => console.error(err.toString()));
     event.preventDefault();
 });

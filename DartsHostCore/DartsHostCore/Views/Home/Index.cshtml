@@ -1,0 +1,29 @@
+﻿@page
+<div>
+    <h1>Test page for signalR Dart room</h1>
+    <div>
+        <h2>Start room</h2>
+        <div>
+            <label>User: <input type="text" id="userInput" /></label>
+            <label>Room: <input type="text" id="roomName" /></label>
+            <input type="button" id="startRoom" value="Start Room" />
+            <input type="button" id="joinRoom" value="Join Room" />
+            <input type="button" id="leaveRoom" value="Leave Room" />
+        </div>
+    </div>
+    <div>
+        <h2>Chat in room</h2>
+        <div>
+            <label>Chat Message: <input type="text" id="messageInput" /></label>
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div>
+        <hr />
+    </div>
+    <div>
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+<script src="~/lib/signalr.min.js"></script>
+<script src="~/js/chatTest.js"></script>
