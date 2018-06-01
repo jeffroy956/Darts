@@ -18,6 +18,18 @@ connection.on("ReceiveMessage", (user, message) => {
     document.getElementById("messagesList").appendChild(li);
 });
 
+connection.on("Register", (player) => {
+    const li = document.createElement("li");
+    li.textContent = "registered: " + player.name + ", id: " + player.id;
+    document.getElementById("messagesList").appendChild(li);
+});
+
+connection.on("Failure", (message) => {
+    const li = document.createElement("li");
+    li.textContent = message;
+    document.getElementById("errorsList").appendChild(li);
+});
+
 connection.start().catch(err => console.error(err.toString()));
 
 document.getElementById("sendButton").addEventListener("click", event => {
@@ -31,5 +43,11 @@ document.getElementById("startRoom").addEventListener("click", event => {
     const user = document.getElementById("userInput").value;
     const roomName = document.getElementById("roomName").value;
     connection.invoke("StartRoom", user, roomName).catch(err => console.error(err.toString()));
+    event.preventDefault();
+});
+
+document.getElementById("register").addEventListener("click", event => {
+    const userName = document.getElementById("userName").value;
+    connection.invoke("Register", userName).catch(err => console.error(err.toString()));
     event.preventDefault();
 });

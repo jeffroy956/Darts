@@ -13,5 +13,6 @@ namespace DartsHostCore.Models
         }
 
         public string Name { get; private set; }
+        public Guid Id { get; private set; } = Guid.NewGuid();
     }
 }

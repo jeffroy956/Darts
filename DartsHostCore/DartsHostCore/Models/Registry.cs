@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace DartsHostCore.Models
 {
-    public class RoomRegistry
+    public class Registry
     {
-        public void Register(string roomName, Player player)
+        public void CreateRoom(string roomName, Player player)
         {
             var existingRoom = FindRoom(roomName);
             if (existingRoom == null)
@@ -19,6 +19,32 @@ namespace DartsHostCore.Models
                 throw new DartRoomException($"Room name {roomName} is already in use.");
             }
         }
+
+        public Player RegisterPlayer(string name)
+        {
+            var player = FindPlayer(name);
+            if (player == null)
+            {
+                player = new Player(name);
+                players.Add(player);
+
+                return player;
+            }
+
+            throw new DartRoomException($"Player name {name} is already in use.");
+        }
+        public void UnregisterPlayer(Player player)
+        {
+            players.Remove(player);
+        }
+
+        public Player FindPlayer(string name)
+        {
+            return players.Find((player) => player.Name == name);
+        }
+
+
+        private List<Player> players = new List<Player>();
 
         public Room FindRoom(string roomName)
         {
@@ -37,14 +63,14 @@ namespace DartsHostCore.Models
             FindRoom(roomName).Join(player);
         }
 
-        public void Unregister(string roomName, Player player)
+        public void CloseRoom(string roomName, Player player)
         {
             var room = FindRoom(roomName);
             if (room == null)
             {
                 throw new DartRoomException($"Cannot unregister room {roomName}.");
             }
-            if (room.Owner.Name == player.Name)
+            if (ReferenceEquals(room.Owner, player))
             {
                 Rooms.Remove(FindRoom(roomName));
             }

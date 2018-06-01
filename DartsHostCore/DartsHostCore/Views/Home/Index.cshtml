@@ -1,6 +1,18 @@
 ﻿@page
+<style>
+    #errorsList {
+        color: red;
+    }
+</style>
 <div>
     <h1>Test page for signalR Dart room</h1>
+    <div>
+        <h2>Register</h2>
+        <div>
+            <label>User: <input type="text" id="userName" /></label>
+            <input type="button" id="register" value="Register" />
+        </div>
+    </div>
     <div>
         <h2>Start room</h2>
         <div>
@@ -23,6 +35,9 @@
     </div>
     <div>
         <ul id="messagesList"></ul>
+    </div>
+    <div>
+        <ul id="errorsList"></ul>
     </div>
 </div>
 <script src="~/lib/signalr.min.js"></script>
